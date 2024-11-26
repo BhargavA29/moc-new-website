@@ -18,16 +18,42 @@ const stats = [
 
 export function StatsSection() {
     return (
-        <section className="py-16 bg-[#0d1117] backdrop-blur-sm px-8">
-            <div className="container mx-auto px-4">
-                <h2 className="text-5xl font-bold mb-12">Our numbers do <br />the talking</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    {stats.map((stat, index) => (
-                        <div key={index} className="text-center">
-                            <div className="text-4xl font-bold text-yellow-400 mb-2">{stat.value}</div>
-                            <div className="text-gray-400">{stat.label}</div>
-                        </div>
-                    ))}
+        <section className="relative py-32 px-16 bg-[#0d1117]">
+            <div
+                className="absolute inset-0 bg-gradient-to-t from-[#1E2736] to-[#0d1117]"
+                aria-hidden="true"
+            />
+
+            <div className="container mx-auto px-16 relative z-10">
+                <h2 className="text-6xl font-bold mb-16 text-white">
+                    Our numbers do<br />
+                    the talking
+                </h2>
+
+                <div className="grid grid-cols-4 gap-8">
+                    <div>
+                        <div className="text-[56px] font-bold text-[#FFC857] ">450+</div>
+                        <div className="text-[56px] font-bold text-[#FFC857] mb-4">hours</div>
+                        <div className="text-[#A1A1AA] text-2xl">video content</div>
+                    </div>
+
+                    <div>
+                        <div className="text-[56px] font-bold text-[#FFC857]">200+</div>
+                        <div className="text-[56px] font-bold text-[#FFC857] mb-4">bn</div>
+                        <div className="text-[#A1A1AA] text-2xl">content views</div>
+                    </div>
+
+                    <div>
+                        <div className="text-[56px] font-bold text-[#FFC857]">3.1</div>
+                        <div className="text-[56px] font-bold text-[#FFC857] mb-4">mn</div>
+                        <div className="text-[#A1A1AA] text-2xl">subscribers</div>
+                    </div>
+
+                    <div>
+                        <div className="text-[56px] font-bold text-[#FFC857]">25k+</div>
+                        <div className="text-[56px] font-bold text-[#FFC857] mb-4">active</div>
+                        <div className="text-[#A1A1AA] text-2xl">community</div>
+                    </div>
                 </div>
             </div>
         </section>

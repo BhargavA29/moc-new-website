@@ -17,7 +17,9 @@ export function JoinSection() {
                         </p>
                         <div className="space-y-6">
                             <Link
-                                href="#"
+                                href="https://www.youtube.com/@menofculturepodcast"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex items-center gap-3 text-xl"
                             >
                                 <div className="rounded-full">
@@ -29,7 +31,9 @@ export function JoinSection() {
                                 </svg>
                             </Link>
                             <Link
-                                href="#"
+                                href="https://www.snapchat.com/add/menofculture24?share_id=us5esu2zD8E&locale=en-GB"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex items-center gap-3 text-xl"
                             >
                                 <div className="rounded-full">
@@ -41,7 +45,9 @@ export function JoinSection() {
                                 </svg>
                             </Link>
                             <Link
-                                href="#"
+                                href="https://discord.gg/GAnTMVurm4"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex items-center gap-3 text-xl"
                             >
                                 <div className="rounded-full">
@@ -65,6 +71,8 @@ export function JoinSection() {
                         <div className="pt-6">
                             <Link
                                 href="mailto:contact@menofculture.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex items-center gap-3 text-xl"
                             >
                                 <div className="bg-white p-2 rounded-full">

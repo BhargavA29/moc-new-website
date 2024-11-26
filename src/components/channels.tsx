@@ -7,21 +7,21 @@ const channels = [
         title: 'MoC Podcast',
         description: 'The MoC Podcast covers film. Join us for movie reviews, industry insights, and discussions on new releases and classics. There\'s something for everyone!',
         image: '/media/channels/moc-podcast.png',
-        link: '#'
+        link: 'https://www.youtube.com/@menofculturepodcast'
     },
     {
         id: 2,
         title: 'MoC Ultra',
         description: 'The MoC Podcast covers film. Join us for movie reviews, industry insights, and discussions on new releases and classics. There\'s something for everyone!',
         image: '/media/channels/moc-ultra.png',
-        link: '#'
+        link: 'https://www.youtube.com/@MenofCultureUltra'
     },
     {
         id: 3,
         title: 'MoC Highlights',
         description: 'The MoC Podcast covers film. Join us for movie reviews, industry insights, and discussions on new releases and classics. There\'s something for everyone!',
         image: '/media/channels/moc-highlights.png',
-        link: '#'
+        link: 'https://www.youtube.com/@menofculturehighlights'
     }
 ]
 
@@ -44,6 +44,8 @@ export function Channels() {
                             <p className="text-gray-400 mb-4">{channel.description}</p>
                             <Link
                                 href={channel.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="text-yellow-400 hover:text-yellow-300 flex items-center gap-2"
                             >
                                 Visit channel

@@ -16,12 +16,13 @@ export function Navbar() {
                             alt="MoC Logo"
                             width={40}
                             height={40}
+                            className="w-8 h-8 md:w-10 md:h-10"
                         />
-                        <span className="font-bold text-xl">Men Of Culture</span>
+                        <span className="honk-brand text-xl md:text-3xl">Men Of Culture</span>
                     </Link>
 
-                    {/* Navigation Links */}
-                    <div className="flex items-center gap-6">
+                    {/* Navigation Links - Hidden on mobile */}
+                    <div className="hidden md:flex items-center gap-6">
                         {['Badal', 'Mohit', 'Priyanshu'].map((item) => (
                             <Link
                                 key={item}
@@ -39,6 +40,16 @@ export function Navbar() {
                             Contact Us
                         </Button>
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <Button
+                        variant="ghost"
+                        className="md:hidden"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </Button>
                 </nav>
             </div>
         </header>

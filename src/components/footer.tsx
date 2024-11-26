@@ -20,17 +20,17 @@ const footerLinks = {
 
 export function Footer() {
     return (
-        <footer className="bg-[#0d1117] py-16 border-t border-white/10 px-16 text-xl">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-24 mb-12">
+        <footer className="bg-[#0d1117] py-8 md:py-16 border-t border-white/10 px-4 md:px-16 text-base md:text-xl">
+            <div className="container mx-auto">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-24 mb-12">
                     {/* Brand Column */}
-                    <div>
+                    <div className="col-span-2 sm:col-span-2 md:col-span-1">
                         <div className="flex items-center gap-2 mb-6">
-                            <span className="honk-brand text-5xl">MEN OF CULTURE</span>
+                            <span className="honk-brand text-3xl md:text-5xl">MEN OF CULTURE</span>
                         </div>
-                        <p className="text-gray-400">
-                            Where comedy meets <br />
-                            culture, and entertainment <br />
+                        <p className="text-gray-400 text-sm md:text-base">
+                            Where comedy meets <br className="hidden md:block" />
+                            culture, and entertainment <br className="hidden md:block" />
                             knows no bounds
                         </p>
                     </div>

@@ -1,7 +1,7 @@
 // /src/components/hero.tsx
 export function Hero() {
     return (
-        <section className="bg-[#0d1117] relative min-h-screen flex items-center pt-16">
+        <section className="bg-[#0d1117] relative min-h-[80vh] md:min-h-screen flex items-end pb-12 md:pb-24 pt-16">
             {/* Background Video */}
             <video
                 autoPlay
@@ -21,11 +21,13 @@ export function Hero() {
 
             {/* Content */}
             <div className="container mx-auto px-4 relative z-10">
-                <h1 className="text-6xl md:text-7xl font-bold text-yellow-400 leading-tight">
-                    We make<br />
-                    conversations<br />
-                    around cinema
-                </h1>
+                <div className="max-w-2xl pl-4 md:pl-8">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#FFC857] leading-tight">
+                        We make<br />
+                        conversations <br />
+                        around cinema
+                    </h1>
+                </div>
             </div>
         </section>
     )

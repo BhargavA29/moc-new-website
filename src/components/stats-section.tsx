@@ -37,15 +37,34 @@ export function StatsSection() {
     useEffect(() => {
         async function fetchChannelStats() {
             try {
+                // Try to get cached data first
+                const cachedStats = localStorage.getItem('youtubeStats');
+                const cacheTimestamp = localStorage.getItem('youtubeStatsTimestamp');
+
+                // Check if we have valid cached data (less than 6 hours old)
+                if (cachedStats && cacheTimestamp) {
+                    const isExpired = Date.now() - parseInt(cacheTimestamp) > 6 * 60 * 60 * 1000; // 6 hours
+                    if (!isExpired) {
+                        setTotalStats(JSON.parse(cachedStats));
+                        return;
+                    }
+                }
+
+                // If no cache or expired, fetch new data
                 const responses = await Promise.all(
-                    channels.map(channelId =>
-                        fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`)
-                            .then(res => res.json())
-                    )
+                    channels.map(async channelId => {
+                        const response = await fetch(
+                            `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+                        );
+                        if (!response.ok) {
+                            throw new Error('YouTube API request failed');
+                        }
+                        return response.json();
+                    })
                 );
 
                 const combinedStats = responses.reduce((acc, response) => {
-                    const stats = response.items[0]?.statistics;
+                    const stats = response.items?.[0]?.statistics;
                     if (stats) {
                         acc.subscriberCount += parseInt(stats.subscriberCount);
                         acc.viewCount += parseInt(stats.viewCount);
@@ -58,8 +77,17 @@ export function StatsSection() {
                     videoCount: 0,
                 });
 
+                // Cache the new data
+                localStorage.setItem('youtubeStats', JSON.stringify(combinedStats));
+                localStorage.setItem('youtubeStatsTimestamp', Date.now().toString());
+
                 setTotalStats(combinedStats);
             } catch (error) {
+                // If API fails, try to use cached data even if expired
+                const cachedStats = localStorage.getItem('youtubeStats');
+                if (cachedStats) {
+                    setTotalStats(JSON.parse(cachedStats));
+                }
                 console.error('Error fetching YouTube stats:', error);
             }
         }

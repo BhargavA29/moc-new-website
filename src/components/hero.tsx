@@ -1,7 +1,7 @@
 // /src/components/hero.tsx
 export function Hero() {
     return (
-        <section className="bg-[#0d1117] relative min-h-[80vh] md:min-h-screen flex items-end pb-12 md:pb-24 pt-16">
+        <section className="bg-[#0d1117] relative min-h-[60vh] md:min-h-screen flex items-end pb-8 md:pb-24 pt-12 md:pt-16">
             {/* Background Video */}
             <video
                 autoPlay
@@ -20,9 +20,9 @@ export function Hero() {
             />
 
             {/* Content */}
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-8 md:px-16 relative z-10">
                 <div className="max-w-2xl pl-4 md:pl-8">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#FFC857] leading-tight">
+                    <h1 className="text-3xl md:text-6xl font-bold text-[#FFC857] leading-tight">
                         We make<br />
                         conversations <br />
                         around cinema

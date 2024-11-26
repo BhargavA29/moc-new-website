@@ -18,7 +18,7 @@ export function Navbar() {
                             height={40}
                             className="w-8 h-8 md:w-10 md:h-10"
                         />
-                        <span className="honk-brand text-xl md:text-3xl">Men Of Culture</span>
+                        <span className="honk-brand text-xl md:text-3xl">MEN OF CULTURE</span>
                     </Link>
 
                     {/* Navigation Links - Hidden on mobile */}

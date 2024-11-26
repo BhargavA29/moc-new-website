@@ -13,7 +13,7 @@ const videos = [
         link: 'https://youtube.com/watch?v=O-AQpi1baSk',
         title: 'This is a Nightmare! Shaktimaan, Kanguva - Men of Culture - 156',
         type: 'regular',
-        previewVideo: '/media/video-grid/preview/shaktimaan.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/video/upload/v1732636934/moc-website-preview/o9wcr32fdqkex9mj7ixz.mp4'
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const videos = [
         title: '🙏 Please Don\'t Cancel Us! Men of Culture - 153',
         type: 'regular',
         link: 'https://www.youtube.com/watch?v=KtK6eefsQOU',
-        previewVideo: '/media/video-grid/preview/CID.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/video/upload/v1732636955/moc-website-preview/bp1gjzqll03qvplc9lwh.mp4'
     },
 
     {
@@ -30,7 +30,7 @@ const videos = [
         title: 'We Are Finally in Japan - Episode 1',
         type: 'regular',
         link: 'https://www.youtube.com/watch?v=Ss8yhFSeiT8',
-        previewVideo: '/media/video-grid/preview/japan.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/video/upload/v1732636979/moc-website-preview/pydduinvsi6ianforprf.mp4'
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const videos = [
         title: 'How BHOOL BHULAIYAA 3 was Made😭',
         type: 'short',
         link: 'https://www.youtube.com/shorts/J6GAV9Bgqg8',
-        previewVideo: '/media/video-grid/preview/bb3.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/video/upload/v1732636942/moc-website-preview/ni8rmd2bmhlhcxzc7iso.mp4'
     },
     // Second Row Videos
     {
@@ -47,7 +47,7 @@ const videos = [
         link: 'https://youtube.com/watch?v=M5Vp4NbfiSg',
         title: 'They used AI in KANGUVA😧',
         type: 'short',
-        previewVideo: '/media/video-grid/preview/kanguva.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/video/upload/v1732636926/moc-website-preview/aj86bmgn7c8horzshs4v.mp4'
     },
     {
         id: 6,
@@ -55,7 +55,7 @@ const videos = [
         link: 'https://www.youtube.com/watch?v=_vPBw2ckwVA',
         title: 'Making Of Stree Universe With The Director Himself | Amar Kaushik | Men Of Culture 149',
         type: 'regular',
-        previewVideo: '/media/video-grid/preview/stree2.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/video/upload/v1732636952/moc-website-preview/tg8syios8f2q28pcofj9.mp4'
     },
     {
         id: 7,
@@ -63,7 +63,7 @@ const videos = [
         link: 'https://www.youtube.com/watch?v=s_G-YNcPNqM',
         title: 'Men of Culture Delhi ki Bakc#odi - MEGA vlog',
         type: 'regular',
-        previewVideo: '/media/video-grid/preview/delhi.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/video/upload/v1732636988/moc-website-preview/mzn4r1xzqnswisq2noyr.mp4'
     },
     {
         id: 8,
@@ -71,7 +71,7 @@ const videos = [
         link: 'https://www.youtube.com/watch?v=A88FuOSvWSE',
         title: 'Marvel is Cooking, So are We!😉 Men of culture - 155',
         type: 'regular',
-        previewVideo: '/media/video-grid/preview/red-hulk.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/video/upload/v1732636940/moc-website-preview/hwnmadrus5arsihrmx3e.mp4'
     }
 
 ]

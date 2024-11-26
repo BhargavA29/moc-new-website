@@ -1,21 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { SlotCounter } from '@/components/ui/slot-counter';
-
-interface Stats {
-    viewCount: number;
-    subscriberCount: number;
-    videoCount: number;
-}
-
-const stats = [
-    { value: '450+', label: 'hours video content' },
-    { value: '200+', label: 'bn content views' },
-    { value: '31', label: 'mn subscribers' },
-    { value: '25k+', label: 'active community' },
-]
-
 export function StatsSection() {
     return (
         <section className="relative py-32 px-16 bg-[#0d1117]">

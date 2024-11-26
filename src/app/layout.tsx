@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Honk } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
+});
+
+const honk = Honk({
+    subsets: ["latin"],
+    variable: "--font-honk",
+    weight: "400",
+    display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -19,12 +27,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link href="https://fonts.googleapis.com/css2?family=Honk:MORF,SHLN@17,71.5&display=swap" rel="stylesheet" />
-            </head>
-            <body className={`${inter.variable} antialiased`}>
+            <body className={`${inter.variable} ${honk.variable} antialiased`}>
                 {children}
             </body>
         </html>

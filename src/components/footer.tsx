@@ -1,6 +1,5 @@
 // /src/components/footer.tsx
 import Link from 'next/link'
-import Image from 'next/image'
 
 const footerLinks = {
     quickLinks: [
@@ -26,7 +25,7 @@ export function Footer() {
                     {/* Brand Column */}
                     <div className="col-span-2 sm:col-span-2 md:col-span-1">
                         <div className="flex items-center gap-2 mb-6">
-                            <span className="honk-brand text-3xl md:text-5xl">MEN OF CULTURE</span>
+                            <span className="honk-brand text-3xl md:text-4xl">MEN OF CULTURE</span>
                         </div>
                         <p className="text-gray-400 text-sm md:text-base">
                             Where comedy meets <br className="hidden md:block" />

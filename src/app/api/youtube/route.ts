@@ -29,7 +29,13 @@ export async function GET() {
         }, { viewCount: 0, subscriberCount: 0, videoCount: 0 });
 
         return NextResponse.json(totalStats);
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to fetch stats' }, { status: 500 });
+    } catch (err: unknown) {
+        // Log the error for debugging
+        console.error('YouTube API Error:', err);
+
+        return NextResponse.json(
+            { error: 'Failed to fetch stats' },
+            { status: 500 }
+        );
     }
-} 
+}

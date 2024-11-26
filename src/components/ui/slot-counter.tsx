@@ -8,7 +8,7 @@ interface SlotCounterProps {
     duration?: number;
 }
 
-export function SlotCounter({ value, duration = 2 }: SlotCounterProps) {
+export function SlotCounter({ value }: SlotCounterProps) {
     const [isInView, setIsInView] = useState(false);
     const ref = useRef(null);
 

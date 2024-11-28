@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog';
+import { Menu } from 'lucide-react';
 
 export function Navbar() {
     return (
@@ -21,7 +23,7 @@ export function Navbar() {
                         <span className="honk-brand text-xl md:text-3xl">MEN OF CULTURE</span>
                     </Link>
 
-                    {/* Navigation Links - Hidden on mobile */}
+                    {/* Desktop Navigation Links */}
                     <div className="hidden md:flex items-center gap-6">
                         {['Badal', 'Mohit', 'Priyanshu'].map((item) => (
                             <Link
@@ -41,15 +43,39 @@ export function Navbar() {
                         </Button>
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <Button
-                        variant="ghost"
-                        className="md:hidden"
-                    >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </Button>
+                    {/* Mobile Menu */}
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="md:hidden"
+                            >
+                                <Menu className="h-6 w-6" />
+                                <span className="sr-only">Toggle menu</span>
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent className="w-[300px] sm:w-[400px] bg-zinc-950/90 backdrop-blur-sm border-white/10">
+                            <DialogTitle className="sr-only">Navigation Menu</DialogTitle>
+                            <nav className="flex flex-col gap-4 text-center">
+                                {['Badal', 'Mohit', 'Priyanshu'].map((item) => (
+                                    <Link
+                                        key={item}
+                                        href="#"
+                                        className="text-lg text-gray-300 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                                    >
+                                        {item}
+                                    </Link>
+                                ))}
+                                <Button
+                                    variant="secondary"
+                                    className="mt-4 w-full"
+                                >
+                                    Contact Us
+                                </Button>
+                            </nav>
+                        </DialogContent>
+                    </Dialog>
                 </nav>
             </div>
         </header>

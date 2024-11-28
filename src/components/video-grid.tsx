@@ -13,7 +13,7 @@ const videos = [
         link: 'https://youtube.com/watch?v=O-AQpi1baSk',
         title: 'This is a Nightmare! Shaktimaan, Kanguva - Men of Culture - 156',
         type: 'regular',
-        previewVideo: '/media/video-grid/preview/shaktimaan.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/image/upload/v1732782857/moc-website-preview-gifs/bpszjueyad3yjuhql7uj.gif'
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const videos = [
         title: '🙏 Please Don\'t Cancel Us! Men of Culture - 153',
         type: 'regular',
         link: 'https://www.youtube.com/watch?v=KtK6eefsQOU',
-        previewVideo: '/media/video-grid/preview/CID.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/image/upload/v1732782879/moc-website-preview-gifs/i5j97nxal0bma9ekvoty.gif'
     },
 
     {
@@ -30,7 +30,7 @@ const videos = [
         title: 'We Are Finally in Japan - Episode 1',
         type: 'regular',
         link: 'https://www.youtube.com/watch?v=Ss8yhFSeiT8',
-        previewVideo: '/media/video-grid/preview/japan.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/image/upload/v1732782870/moc-website-preview-gifs/pxkhrstrr51onuqimvbe.gif'
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const videos = [
         title: 'How BHOOL BHULAIYAA 3 was Made😭',
         type: 'short',
         link: 'https://www.youtube.com/shorts/J6GAV9Bgqg8',
-        previewVideo: '/media/video-grid/preview/bb3.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/image/upload/v1732782858/moc-website-preview-gifs/boytzxp1rle6ww8uxaxf.gif'
     },
     // Second Row Videos
     {
@@ -47,7 +47,7 @@ const videos = [
         link: 'https://youtube.com/watch?v=M5Vp4NbfiSg',
         title: 'They used AI in KANGUVA😧',
         type: 'short',
-        previewVideo: '/media/video-grid/preview/kanguva.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/image/upload/v1732782886/moc-website-preview-gifs/cd9vu10vfpdf6qdpw4o0.gif'
     },
     {
         id: 6,
@@ -55,7 +55,7 @@ const videos = [
         link: 'https://www.youtube.com/watch?v=_vPBw2ckwVA',
         title: 'Making Of Stree Universe With The Director Himself | Amar Kaushik | Men Of Culture 149',
         type: 'regular',
-        previewVideo: '/media/video-grid/preview/stree2.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/image/upload/v1732782870/moc-website-preview-gifs/u7uw6af2ah3msgfdvauj.gif'
     },
     {
         id: 7,
@@ -63,7 +63,7 @@ const videos = [
         link: 'https://www.youtube.com/watch?v=s_G-YNcPNqM',
         title: 'Men of Culture Delhi ki Bakc#odi - MEGA vlog',
         type: 'regular',
-        previewVideo: '/media/video-grid/preview/delhi.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/image/upload/v1732782878/moc-website-preview-gifs/rl3xcjkga7dyxjxpt82h.gif'
     },
     {
         id: 8,
@@ -71,24 +71,23 @@ const videos = [
         link: 'https://www.youtube.com/watch?v=A88FuOSvWSE',
         title: 'Marvel is Cooking, So are We!😉 Men of culture - 155',
         type: 'regular',
-        previewVideo: '/media/video-grid/preview/red-hulk.mp4'
+        previewVideo: 'https://res.cloudinary.com/drag8k9na/image/upload/v1732782859/moc-website-preview-gifs/rb8vvwb8mqqb1agryju3.gif'
     }
 
 ]
 
 function VideoCard({ video, isShort = false }: { video: typeof videos[0], isShort?: boolean }) {
-    const [isMounted, setIsMounted] = useState(false);
+    const [isClient, setIsClient] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
-    const videoRef = useRef<HTMLVideoElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Handle client-side mounting
     useEffect(() => {
-        setIsMounted(true);
+        setIsClient(true);
     }, []);
 
     useEffect(() => {
-        if (!isMounted) return;
+        if (!isClient) return;
 
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -102,28 +101,22 @@ function VideoCard({ video, isShort = false }: { video: typeof videos[0], isShor
         }
 
         return () => observer.disconnect();
-    }, [isMounted]);
+    }, [isClient]);
 
-    // Only attach event handlers on client side
-    const handleMouseEnter = () => {
-        if (!videoRef.current || !isMounted) return;
-        videoRef.current.src = video.previewVideo;
-        videoRef.current.load();
-        videoRef.current.play().catch(() => { });
-    };
-
-    const handleMouseLeave = () => {
-        if (!videoRef.current || !isMounted) return;
-        videoRef.current.src = '';
-        videoRef.current.load();
-    };
+    // Don't render content until client-side
+    if (!isClient) {
+        return (
+            <div
+                ref={containerRef}
+                className={`relative ${isShort ? 'aspect-[9/16]' : 'aspect-video'} bg-zinc-800 rounded-lg overflow-hidden`}
+            />
+        );
+    }
 
     return (
         <div
             ref={containerRef}
             className={`relative ${isShort ? 'aspect-[9/16]' : 'aspect-video'} bg-zinc-800 rounded-lg overflow-hidden group cursor-pointer`}
-            onMouseEnter={isMounted ? handleMouseEnter : undefined}
-            onMouseLeave={isMounted ? handleMouseLeave : undefined}
         >
             {isVisible && (
                 <>
@@ -135,13 +128,13 @@ function VideoCard({ video, isShort = false }: { video: typeof videos[0], isShor
                         sizes={isShort ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"}
                         loading="lazy"
                     />
-                    <video
-                        ref={videoRef}
+                    <Image
+                        src={video.previewVideo}
+                        alt={`${video.title || 'Video'} preview`}
+                        fill
                         className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
-                        loop
-                        muted
-                        playsInline
-                        preload="none"
+                        sizes={isShort ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"}
+                        loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100 flex items-center justify-center">
                         <Button

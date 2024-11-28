@@ -90,3 +90,13 @@ body {
     "MORF" 17,
     "SHLN" 71.5;
 }
+
+@layer utilities {
+  .scroll-margin {
+    scroll-margin-top: 6rem;
+  }
+
+  .scroll-padding {
+    scroll-padding-top: 6rem;
+  }
+}

@@ -2,10 +2,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-
 export function JoinSection() {
     return (
-        <section className="py-16 px-8 md:px-16 bg-[#0d1117]">
+        <section className="p-16 md:px-16 lg:px-32 bg-[#0d1117]">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
                     {/* Left Section */}
@@ -20,13 +19,18 @@ export function JoinSection() {
                                 href="https://www.youtube.com/@menofculturepodcast"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 text-xl"
+                                className="flex items-center gap-3 text-xl group"
                             >
-                                <div className="rounded-full">
-                                    <Image src="/media/youtube.png" alt="YouTube" height={40} width={40} />
+                                <div className="rounded-full group-hover:bg-[#FF0000] p-2 transition-all duration-300">
+                                    <Image
+                                        src="https://img.icons8.com/?size=100&id=37325&format=png&color=FFFFFF"
+                                        alt="YouTube"
+                                        height={40}
+                                        width={40}
+                                    />
                                 </div>
-                                <span className="text-[#FFA500] text-lg md:text-xl">YouTube</span>
-                                <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <span className="text-[#FFA500] text-lg md:text-xl group-hover:text-[#FF0000] transition-all duration-300">YouTube</span>
+                                <svg className="w-5 h-5 text-[#FFA500] group-hover:text-[#FF0000] transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </Link>
@@ -34,13 +38,18 @@ export function JoinSection() {
                                 href="https://www.snapchat.com/add/menofculture24?share_id=us5esu2zD8E&locale=en-GB"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 text-xl"
+                                className="flex items-center gap-3 text-xl group"
                             >
-                                <div className="rounded-full">
-                                    <Image src="/media/snapchat.png" alt="Snapchat" height={40} width={40} />
+                                <div className="rounded-full group-hover:bg-[#fffc00] p-2 transition-all duration-300">
+                                    <Image
+                                        src="https://img.icons8.com/?size=100&id=23029&format=png&color=FFFFFF"
+                                        alt="Snapchat"
+                                        height={40}
+                                        width={40}
+                                    />
                                 </div>
-                                <span className="text-[#FFA500] text-lg md:text-xl">Snapchat</span>
-                                <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <span className="text-[#FFA500] text-lg md:text-xl group-hover:text-[#fffc00] transition-all duration-300">Snapchat</span>
+                                <svg className="w-5 h-5 text-[#FFA500] group-hover:text-[#fffc00] transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </Link>
@@ -48,13 +57,18 @@ export function JoinSection() {
                                 href="https://discord.gg/GAnTMVurm4"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 text-xl"
+                                className="flex items-center gap-3 text-xl group"
                             >
-                                <div className="rounded-full">
-                                    <Image src="/media/discord.png" alt="Discord" height={40} width={40} />
+                                <div className="rounded-full group-hover:bg-[#5865F2] p-2 transition-all duration-300">
+                                    <Image
+                                        src="https://img.icons8.com/?size=100&id=25627&format=png&color=FFFFFF"
+                                        alt="Discord"
+                                        height={40}
+                                        width={40}
+                                    />
                                 </div>
-                                <span className="text-[#FFA500] text-lg md:text-xl">Discord</span>
-                                <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <span className="text-[#FFA500] text-lg md:text-xl group-hover:text-[#5865F2] transition-all duration-300">Discord</span>
+                                <svg className="w-5 h-5 text-[#FFA500] group-hover:text-[#5865F2] transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </Link>
@@ -75,8 +89,13 @@ export function JoinSection() {
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-3 text-xl"
                             >
-                                <div className="bg-white p-2 rounded-full">
-                                    <Image src="/media/gmail.png" alt="Email" width={30} height={30} />
+                                <div>
+                                    <Image
+                                        src="https://img.icons8.com/?size=100&id=rUgzXdXFnhmg&format=png&color=FFFFFF"
+                                        alt="Email"
+                                        width={30}
+                                        height={30}
+                                    />
                                 </div>
                                 <span className="text-[#FFA500] text-lg md:text-xl">Email us</span>
                                 <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">

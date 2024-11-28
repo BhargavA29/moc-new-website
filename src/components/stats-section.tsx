@@ -2,6 +2,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useCountAnimation } from '../hooks/useCountAnimation';
 import { useInView } from 'react-intersection-observer';
+import { TvMinimalPlay, Eye, Youtube, Users } from 'lucide-react';
 
 interface ChannelStats {
     subscriberCount: number;
@@ -107,49 +108,72 @@ export function StatsSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#1E2736] to-[#0d1117]" aria-hidden="true" />
 
             <div className="container mx-auto px-4 md:px-16 relative z-10">
-                <h2 className="text-3xl md:text-6xl font-bold mb-8 md:mb-16 text-white">
-                    Our numbers do <br className="hidden sm:block" />
-                    <span className="sm:ml-0">the talking</span>
-                </h2>
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-6xl font-bold text-white">
+                        Our numbers do the talking
+                    </h2>
+                    <p className="text-[#A1A1AA] mt-4 text-lg">*Combined stats of all three channels.</p>
+                </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-                    <div className="text-center md:text-left">
-                        <div className="flex flex-col space-y-4">
+                <div className="grid grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
+                    {/* Hours of Content */}
+                    <div className="text-center">
+                        <div className="flex flex-col items-center space-y-4">
+                            <div className="bg-[#FFC857]/10 p-4 rounded-full">
+                                <TvMinimalPlay className="w-8 h-8 md:w-10 md:h-10 text-[#FFC857]" />
+                            </div>
                             <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">
                                 {hours}+
                             </span>
-                            <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">hours</span>
-                            <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl mt-2">video content</span>
+                            <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl">hours of content</span>
                         </div>
                     </div>
 
-                    <div className="text-center md:text-left">
-                        <div className="flex flex-col space-y-4">
-                            <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">
-                                {views.toFixed(1)}
-                            </span>
-                            <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">M</span>
-                            <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl mt-2">content views</span>
+                    {/* Views */}
+                    <div className="text-center">
+                        <div className="flex flex-col items-center space-y-4">
+                            <div className="bg-[#FFC857]/10 p-4 rounded-full">
+                                <Eye className="w-8 h-8 md:w-10 md:h-10 text-[#FFC857]" />
+                            </div>
+                            <div className="flex items-baseline justify-center">
+                                <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">
+                                    {views.toFixed(1)}
+                                </span>
+                                <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857] ml-2">M</span>
+                            </div>
+                            <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl">content views</span>
                         </div>
                     </div>
 
-                    <div className="text-center md:text-left">
-                        <div className="flex flex-col space-y-4">
-                            <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">
-                                {subscribers.toFixed(1)}
-                            </span>
-                            <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">K</span>
-                            <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl mt-2">subscribers</span>
+                    {/* Subscribers */}
+                    <div className="text-center">
+                        <div className="flex flex-col items-center space-y-4">
+                            <div className="bg-[#FFC857]/10 p-4 rounded-full">
+                                <Youtube className="w-8 h-8 md:w-10 md:h-10 text-[#FFC857]" />
+                            </div>
+                            <div className="flex items-baseline justify-center">
+                                <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">
+                                    {subscribers.toFixed(1)}
+                                </span>
+                                <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857] ml-2">K</span>
+                            </div>
+                            <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl">subscribers</span>
                         </div>
                     </div>
 
-                    <div className="text-center md:text-left">
-                        <div className="flex flex-col space-y-4">
-                            <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">
-                                {community}k+
-                            </span>
-                            <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">active</span>
-                            <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl mt-2">community</span>
+                    {/* Community */}
+                    <div className="text-center">
+                        <div className="flex flex-col items-center space-y-4">
+                            <div className="bg-[#FFC857]/10 p-4 rounded-full">
+                                <Users className="w-8 h-8 md:w-10 md:h-10 text-[#FFC857]" />
+                            </div>
+                            <div className="flex items-baseline justify-center">
+                                <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">
+                                    {community}
+                                </span>
+                                <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857] ml-2">k+</span>
+                            </div>
+                            <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl">active community</span>
                         </div>
                     </div>
                 </div>

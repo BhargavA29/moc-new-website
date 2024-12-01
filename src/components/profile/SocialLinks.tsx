@@ -35,19 +35,18 @@ export function SocialLinks({ links }: SocialLinksProps) {
         }
     };
 
-    const getIconSize = (platform: string): string => {
+    const getIconSize = (platform: string): { width: number; height: number } => {
         switch (platform) {
-            case 'youtube': return 'w-24 md:w-24 h-8 md:h-8';
-            case 'instagram': return 'w-24 md:w-36 h-8 md:h-12';
-            case 'twitter': return 'w-7 h-7 md:w-6 md:h-6';
-            default: return 'w-8 h-8';
+            case 'youtube': return { width: 100, height: 40 };
+            case 'instagram': return { width: 140, height: 40 };
+            case 'twitter': return { width: 40, height: 40 };
+            default: return { width: 40, height: 40 };
         }
     };
 
     return (
         <section className="py-12 md:py-32 overflow-hidden">
             <div className="container mx-auto px-4 md:px-16">
-                {/* Header Section */}
                 <motion.div
                     className="mb-8 md:mb-16 px-4 md:px-2 text-center"
                     initial={{ opacity: 0, y: 20 }}
@@ -63,12 +62,12 @@ export function SocialLinks({ links }: SocialLinksProps) {
                     </p>
                 </motion.div>
 
-                {/* Cards Grid */}
                 <div className="grid grid-cols-1 px-8 md:px-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
                     {links.map((link, index) => {
-                        // Determine animation direction based on index
                         const initialX = index === 0 ? -100 : index === 2 ? 100 : 0;
                         const initialY = index === 1 ? 100 : 0;
+
+                        const { width, height } = getIconSize(link.platform);
 
                         return (
                             <motion.div
@@ -82,17 +81,15 @@ export function SocialLinks({ links }: SocialLinksProps) {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`${getPlatformStyle(
-                                        link.platform
-                                    )} rounded-xl md:rounded-2xl p-6 md:p-8 relative group transition-all duration-300 
-                                    min-h-[160px] md:min-h-[200px] flex flex-col justify-between `}
+                                    className={`${getPlatformStyle(link.platform)} rounded-xl md:rounded-2xl p-6 md:p-8 relative group transition-all duration-300 min-h-[160px] md:min-h-[200px] flex flex-col justify-between `}
                                 >
-                                    {/* Platform Icon */}
                                     <div className="absolute top-4 md:top-6 left-4 md:left-6 flex items-center gap-2">
                                         <Image
                                             src={getPlatformIcon(link.platform)}
                                             alt={`${link.platform} icon`}
-                                            className={`object-contain ${getIconSize(link.platform)}`}
+                                            width={width}
+                                            height={height}
+                                            className="object-contain"
                                         />
                                         {link.platform === 'twitter' && (
                                             <span className="text-white text-base md:text-lg font-inter">
@@ -101,7 +98,6 @@ export function SocialLinks({ links }: SocialLinksProps) {
                                         )}
                                     </div>
 
-                                    {/* Channel Name and Arrow */}
                                     <div className="flex justify-between items-end mt-auto">
                                         <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white font-inter">
                                             {link.name}
@@ -129,5 +125,4 @@ export function SocialLinks({ links }: SocialLinksProps) {
         </section>
     );
 }
-
 export default SocialLinks;

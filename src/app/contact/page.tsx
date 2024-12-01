@@ -1,15 +1,10 @@
+"use client";
 
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactInfo } from "@/components/contact/ContactInfo";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { motion } from "framer-motion";
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-    title: 'Contact Us | Men of Culture',
-    description: 'Contact Us',
-}
 
 export default function ContactPage() {
     return (

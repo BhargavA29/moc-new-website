@@ -1,9 +1,8 @@
-
 import { ProfileLayout } from "@/components/profile/ProfileLayout";
 import { ProfileHero } from "@/components/profile/ProfileHero";
 import { ContentGrid } from "@/components/profile/ContentGrid";
 import { ProfileStats } from "@/components/profile/ProfileStats";
-import SocialLinks from "@/components/profile/SocialLinks";
+import { SocialLinks } from "@/components/profile/SocialLinks";
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -39,10 +38,9 @@ const socialLinks = {
 
 export default function MohitPage() {
     return (
-
         <ProfileLayout>
             <ProfileHero
-                coverImage="media/banner.jpg"
+                coverImage="/media/banner.jpg"
                 profileImage="https://pbs.twimg.com/profile_images/1677944567155552257/9RIHfcOd_400x400.jpg"
                 name="MOHIT YODHA"
                 title="Founder - ComicVerse | Co-Founder - MoC"
@@ -50,7 +48,7 @@ export default function MohitPage() {
             />
             <ContentGrid items={contentItems} />
             <ProfileStats channelId="UCKQ5Jj35sjTmJigRtlCPhVQ" />
-            <SocialLinks   {...socialLinks} />
+            <SocialLinks {...socialLinks} />
         </ProfileLayout>
     );
 } 

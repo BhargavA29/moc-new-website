@@ -18,6 +18,11 @@ const honk = Honk({
 export const metadata: Metadata = {
     title: "Men of Culture",
     description: "Official Website of Men of Culture",
+    icons: {
+        icon: '/media/logo.png',
+        apple: '/media/logo.png',
+        shortcut: '/media/logo.png',
+    },
 };
 
 export default function RootLayout({

@@ -1,4 +1,3 @@
-'use client';
 
 
 import { ProfileLayout } from "@/components/profile/ProfileLayout";

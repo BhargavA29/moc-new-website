@@ -6,8 +6,10 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 const navigationItems = [
+    { name: 'Home', href: '/' },
     { name: 'Badal', href: '/badal' },
     { name: 'Mohit', href: '/mohit' },
     { name: 'Priyanshu', href: '/priyanshu' },
@@ -15,6 +17,14 @@ const navigationItems = [
 ];
 
 export function Navbar() {
+    const pathname = usePathname();
+
+    const isActive = (path: string) => {
+        if (path === '/' && pathname === '/') return true;
+        if (path !== '/' && pathname.startsWith(path)) return true;
+        return false;
+    };
+
     return (
         <motion.header
             initial={{ y: -100, opacity: 0 }}
@@ -36,26 +46,35 @@ export function Navbar() {
                         <span className="honk-brand text-xl md:text-3xl">MEN OF CULTURE</span>
                     </Link>
 
-                    {/* Desktop Navigation Links */}
+                    {/* Desktop Navigation Links - Simple Highlight with Smooth Hover */}
                     <div className="hidden md:flex items-center gap-6">
                         {navigationItems.map((item) => (
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-sm text-gray-300 hover:text-white transition-colors"
+                                className={`text-sm transition-all duration-300 ease-in-out relative group ${isActive(item.href)
+                                        ? 'text-[#FFC857]'
+                                        : 'text-gray-300 hover:text-white'
+                                    }`}
                             >
                                 {item.name}
+                                <span
+                                    className={`absolute -bottom-1 left-0 w-full h-[2px] transition-all duration-300 ease-in-out transform origin-left ${isActive(item.href)
+                                            ? 'bg-[#FFC857] scale-x-100'
+                                            : 'bg-white/30 scale-x-0 group-hover:scale-x-100'
+                                        }`}
+                                />
                             </Link>
                         ))}
                     </div>
 
-                    {/* Mobile Menu */}
+                    {/* Mobile Menu - Pill Style with Smooth Transitions */}
                     <Dialog>
                         <DialogTrigger asChild>
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                className="md:hidden"
+                                className="md:hidden text-white hover:text-white/90 transition-colors duration-200"
                             >
                                 <Menu className="h-6 w-6" />
                                 <span className="sr-only">Toggle menu</span>
@@ -67,12 +86,16 @@ export function Navbar() {
                                 <span className="sr-only">Close</span>
                             </DialogClose>
                             <DialogTitle className="sr-only">Navigation Menu</DialogTitle>
-                            <nav className="flex flex-col gap-4 text-center">
+                            <nav className="flex flex-col gap-3 text-center py-4">
                                 {navigationItems.map((item) => (
                                     <Link
                                         key={item.name}
                                         href={item.href}
-                                        className="text-lg text-gray-300 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                                        className={`text-lg px-4 py-2 rounded-full transition-all duration-300 ease-in-out mx-4 
+                                            ${isActive(item.href)
+                                                ? 'text-black bg-[#FFC857] font-medium scale-105'
+                                                : 'text-gray-300 hover:text-white hover:bg-white/10 hover:scale-105'
+                                            }`}
                                     >
                                         {item.name}
                                     </Link>

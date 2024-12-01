@@ -1,46 +1,48 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
-export function useCountAnimation(endValue: number, duration: number = 2000, isVisible: boolean = false) {
+export function useCountAnimation(endValue: number, duration: number, isVisible: boolean) {
     const [count, setCount] = useState(0);
 
-    const easeOutQuart = (x: number): number => {
-        return 1 - Math.pow(1 - x, 4);
-    };
+    useEffect(() => {
+        if (!isVisible) {
+            setCount(0);
+            return;
+        }
 
-    const animate = useCallback(() => {
-        const startTime = Date.now();
+        // Don't animate if the end value is 0
+        if (endValue === 0) {
+            setCount(0);
+            return;
+        }
 
-        const updateCount = () => {
-            const currentTime = Date.now();
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
+        let startTime: number;
+        let animationFrame: number;
 
-            // Use easing function for smoother animation
-            const easedProgress = easeOutQuart(progress);
-            const currentValue = Math.floor(endValue * easedProgress);
+        const animate = (currentTime: number) => {
+            if (!startTime) {
+                startTime = currentTime;
+            }
 
-            setCount(currentValue);
+            const progress = (currentTime - startTime) / duration;
 
             if (progress < 1) {
-                requestAnimationFrame(updateCount);
+                // Round to 2 decimal places during animation to prevent glitchy numbers
+                const currentValue = endValue * Math.min(progress, 1);
+                setCount(Math.round(currentValue * 100) / 100);
+                animationFrame = requestAnimationFrame(animate);
+            } else {
+                setCount(endValue);
             }
         };
 
-        requestAnimationFrame(updateCount);
-    }, [endValue, duration]);
+        animationFrame = requestAnimationFrame(animate);
 
-    useEffect(() => {
-        if (isVisible) {
-            setCount(0); // Reset to 0
-            const timeout = setTimeout(() => {
-                animate();
-            }, 100); // Small delay to ensure reset is visible
-
-            return () => clearTimeout(timeout);
-        } else {
-            setCount(0);
-        }
-    }, [isVisible, animate]);
+        return () => {
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+        };
+    }, [endValue, duration, isVisible]);
 
     return count;
 } 

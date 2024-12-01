@@ -36,7 +36,7 @@ export function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="font-bold mb-4">Quick Links</h3>
+                        <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">Quick Links</h3>
                         <ul className="space-y-2">
                             {footerLinks.quickLinks.map((link) => (
                                 <li key={link.name}>
@@ -53,7 +53,7 @@ export function Footer() {
 
                     {/* Team */}
                     <div>
-                        <h3 className="font-bold mb-4">Team</h3>
+                        <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">Team</h3>
                         <ul className="space-y-2">
                             {footerLinks.team.map((link) => (
                                 <li key={link.name}>
@@ -70,7 +70,7 @@ export function Footer() {
 
                     {/* Socials */}
                     <div>
-                        <h3 className="font-bold mb-4">Socials</h3>
+                        <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">Socials</h3>
                         <ul className="space-y-2">
                             {footerLinks.socials.map((link) => (
                                 <li key={link.name}>

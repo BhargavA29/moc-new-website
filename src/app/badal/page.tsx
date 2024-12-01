@@ -6,6 +6,12 @@ import { ProfileHero } from "@/components/profile/ProfileHero";
 import { ContentGrid } from "@/components/profile/ContentGrid";
 import { ProfileStats } from "@/components/profile/ProfileStats";
 import SocialLinks from "@/components/profile/SocialLinks";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'Badal Yadav | Men of Culture',
+    description: 'Founder - BnfTV | Co-Founder - MoC',
+}
 
 const contentItems = [
     {

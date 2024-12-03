@@ -2,38 +2,33 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Youtube } from 'lucide-react'
-import { useState } from 'react'
 
 const team = [
     {
         name: 'Badal Yadav',
         role: 'Co-founder',
         image: '/media/badal.png',
-        ytChannel: 'https://www.youtube.com/@BnfTV'
+        link: '/badal',
     },
     {
         name: 'Mohit Yodha',
         role: 'Co-founder',
         image: '/media/mohit.png',
-        ytChannel: 'https://www.youtube.com/@comicverseog'
+        link: '/mohit',
     },
     {
         name: 'Priyanshu Jaiswal',
         role: 'Co-founder',
         image: '/media/pj.png',
-        ytChannel: 'https://www.youtube.com/@PJExplained'
+        link: '/priyanshu',
     }
 ]
 
 export function Team() {
-    const [hoveredMember, setHoveredMember] = useState<string | null>(null);
-    const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
-
     return (
-        <section className="py-8 px-8 md:py-16 md:px-16 lg:px-32 bg-[#0d1117]">
+        <section className="py-8 px-16 md:py-16 lg:px-32 bg-[#0d1117]">
             <div className="container mx-auto">
-                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 text-white">People behind the screen</h2>
+                <h2 className="text-2xl sm:text-3xl md:text-6xl font-bold mb-4 text-white">People behind the screen</h2>
                 <p className="text-base sm:text-lg md:text-xl text-[#4B5563] mb-8 md:mb-16">
                     The channel is led by 3 independent YouTubers who
                     <br className="hidden md:block" />
@@ -47,33 +42,33 @@ export function Team() {
                             key={member.name}
                             className="text-center"
                         >
-                            <div
-                                className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-72 md:h-72 mx-auto mb-6 group"
-                                onMouseEnter={() => setHoveredMember(member.name)}
-                                onMouseLeave={() => setHoveredMember(null)}
+                            <Link
+                                href={member.link}
+                                className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-72 md:h-72 mx-auto mb-6 block group overflow-hidden rounded-full"
                             >
                                 <Image
                                     src={member.image}
                                     alt={member.name}
                                     fill
-                                    className="rounded-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-50 group-hover:blur-[2px]"
+                                    className="rounded-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                                 />
-                                {hoveredMember === member.name && (
-                                    <Link
-                                        href={member.ytChannel}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="absolute bottom-1 left-1/2 -translate-x-1/2 flex items-center justify-center"
-                                        onMouseEnter={() => setHoveredIcon(member.name)}
-                                        onMouseLeave={() => setHoveredIcon(null)}
+                                {/* Overlay with arrow */}
+                                <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-center justify-center rounded-full">
+                                    <svg
+                                        className="w-8 h-8 text-white transform transition-all duration-300 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
                                     >
-                                        <div className={`p-3 rounded-full ${hoveredIcon === member.name ? 'bg-white/40' : ''
-                                            } transition-all duration-300`}>
-                                            <Youtube className="w-5 h-5 text-red-600" strokeWidth={1.5} />
-                                        </div>
-                                    </Link>
-                                )}
-                            </div>
+                                        <path 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round" 
+                                            strokeWidth={1.5} 
+                                            d="M7 17L17 7M17 7H7M17 7V17"
+                                        />
+                                    </svg>
+                                </div>
+                            </Link>
                             <h3 className="font-bold text-lg sm:text-xl md:text-2xl mb-2 text-white">{member.name}</h3>
                             <p className="text-[#4B5563] text-base sm:text-lg md:text-xl">{member.role}</p>
                         </div>
@@ -82,4 +77,4 @@ export function Team() {
             </div>
         </section>
     )
-} 
+}

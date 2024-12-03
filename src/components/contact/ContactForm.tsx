@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { motion } from "framer-motion";
 import { useState } from "react";
 
 export function ContactForm() {
@@ -23,13 +22,7 @@ export function ContactForm() {
     return (
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <motion.div
-                    initial={{ x: -100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-2"
-                >
+                <div className="space-y-2">
                     <label className="text-white text-sm">Name</label>
                     <Input
                         placeholder="Your name"
@@ -37,14 +30,8 @@ export function ContactForm() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
-                </motion.div>
-                <motion.div
-                    initial={{ x: 100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="space-y-2"
-                >
+                </div>
+                <div className="space-y-2">
                     <label className="text-white text-sm">Email</label>
                     <Input
                         type="email"
@@ -53,14 +40,8 @@ export function ContactForm() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
-                </motion.div>
-                <motion.div
-                    initial={{ x: -100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="space-y-2"
-                >
+                </div>
+                <div className="space-y-2">
                     <label className="text-white text-sm">Phone</label>
                     <Input
                         type="tel"
@@ -69,14 +50,8 @@ export function ContactForm() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
-                </motion.div>
-                <motion.div
-                    initial={{ x: 100, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="space-y-2"
-                >
+                </div>
+                <div className="space-y-2">
                     <label className="text-white text-sm">Company</label>
                     <Input
                         placeholder="Your company"
@@ -84,15 +59,9 @@ export function ContactForm() {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     />
-                </motion.div>
+                </div>
             </div>
-            <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="space-y-2"
-            >
+            <div className="space-y-2">
                 <label className="text-white text-sm">Message</label>
                 <Textarea
                     placeholder="Your message"
@@ -100,21 +69,15 @@ export function ContactForm() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 />
-            </motion.div>
-            <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="flex justify-center"
-            >
+            </div>
+            <div className="flex justify-center">
                 <Button
                     type="submit"
                     className="bg-[#FFC857] text-black hover:bg-[#FFC857]/90 px-8 py-2 rounded-full"
                 >
                     Get in Touch
                 </Button>
-            </motion.div>
+            </div>
         </form>
     );
 } 

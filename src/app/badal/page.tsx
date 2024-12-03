@@ -41,15 +41,16 @@ export default function BadalPage() {
 
         <ProfileLayout>
             <ProfileHero
-                coverImage="/media/banner.jpg"
                 profileImage="https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg"
-                name="BADAL YADAV"
-                title="Founder - BnfTV | Co-Founder - MoC"
-                quote="My fans love the genuine reactions i give about movies, and my passion for storytelling"
+                firstName="BADAL"
+                lastName="YADAV"
+                roles={["Founder - BnfTV", "Co-Founder - MoC"]}
+                firstNamePosition={{ top: '15%', left: '20%' }}
+                lastNamePosition={{ bottom: '15%', right: '25%' }}
             />
             <ContentGrid items={contentItems} />
             <ProfileStats channelId="UCUinnqDgIsNFleLdkZKbP-w" />
             <SocialLinks   {...socialLinks} />
         </ProfileLayout>
     );
-} 
+}

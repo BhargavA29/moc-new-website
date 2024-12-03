@@ -38,20 +38,17 @@ export function StatsSection() {
     useEffect(() => {
         async function fetchChannelStats() {
             try {
-                // Try to get cached data first
                 const cachedStats = localStorage.getItem('youtubeStats');
                 const cacheTimestamp = localStorage.getItem('youtubeStatsTimestamp');
 
-                // Check if we have valid cached data (less than 6 hours old)
                 if (cachedStats && cacheTimestamp) {
-                    const isExpired = Date.now() - parseInt(cacheTimestamp) > 6 * 60 * 60 * 1000; // 6 hours
+                    const isExpired = Date.now() - parseInt(cacheTimestamp) > 24 * 60 * 60 * 1000; // 24 hours
                     if (!isExpired) {
                         setTotalStats(JSON.parse(cachedStats));
                         return;
                     }
                 }
 
-                // If no cache or expired, fetch new data
                 const responses = await Promise.all(
                     channels.map(async channelId => {
                         const response = await fetch(
@@ -78,13 +75,11 @@ export function StatsSection() {
                     videoCount: 0,
                 });
 
-                // Cache the new data
                 localStorage.setItem('youtubeStats', JSON.stringify(combinedStats));
                 localStorage.setItem('youtubeStatsTimestamp', Date.now().toString());
 
                 setTotalStats(combinedStats);
             } catch (error) {
-                // If API fails, try to use cached data even if expired
                 const cachedStats = localStorage.getItem('youtubeStats');
                 if (cachedStats) {
                     setTotalStats(JSON.parse(cachedStats));
@@ -108,7 +103,7 @@ export function StatsSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#1E2736] to-[#0d1117]" aria-hidden="true" />
 
             <div className="container mx-auto px-4 md:px-16 relative z-10">
-                <div className="text-center mb-12">
+                <div className=" mb-12">
                     <h2 className="text-3xl md:text-6xl font-bold text-white">
                         Our numbers do the talking
                     </h2>
@@ -171,7 +166,7 @@ export function StatsSection() {
                                 <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857]">
                                     {community}
                                 </span>
-                                <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857] ml-2">k+</span>
+                                <span className="text-3xl sm:text-4xl md:text-[56px] font-bold text-[#FFC857] ml-2">K+</span>
                             </div>
                             <span className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl">active community</span>
                         </div>

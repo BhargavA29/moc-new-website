@@ -2,6 +2,12 @@
 'use client'
 
 import { motion } from 'framer-motion';
+import { Bangers } from 'next/font/google';
+
+const bangers = Bangers({
+    weight: '400',
+    subsets: ['latin'],
+});
 
 export function Hero() {
     return (
@@ -24,11 +30,14 @@ export function Hero() {
                 </video>
             </motion.div>
 
-            {/* Overlay */}
-            <div
-                className="absolute inset-0 z-0 bg-gradient-to-b from-black/70 to-black/80"
-                aria-hidden="true"
-            />
+            {/* Overlay - Modified for left-to-right gradient */}
+            <div className="absolute inset-0 z-0">
+                {/* Mobile overlay (full dark) */}
+                <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/70 to-black/80" />
+                
+                {/* Desktop overlay (left to right gradient) */}
+                <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/100 via-black/60 to-transparent" />
+            </div>
 
             {/* Content */}
             <div className="container mx-auto px-4 md:px-16 relative z-10">
@@ -42,7 +51,7 @@ export function Hero() {
                     }}
                     className="max-w-[90%] sm:max-w-2xl"
                 >
-                    <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold text-[#FFC857] leading-tight">
+                    <h1 className={`text-2xl font-bangers sm:text-3xl md:text-8xl font-bold text-[#FFC857] leading-tight ${bangers.className}`}>
                         We make<br />
                         conversations <br />
                         around cinema

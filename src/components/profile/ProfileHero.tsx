@@ -1,115 +1,150 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import Image from "next/image";
+import { motion } from 'framer-motion';
+import { Bangers } from 'next/font/google';
+import { Inter } from 'next/font/google';
+import Image from 'next/image';
 
-interface ProfileHeroProps {
-    coverImage: string;
-    profileImage: string;
-    name: string;
-    title: string;
-    quote: string;
+const bangers = Bangers({
+    weight: '400',
+    subsets: ['latin'],
+});
+
+const inter = Inter({
+    subsets: ['latin'],
+});
+
+interface Position {
+    top?: string;
+    bottom?: string;
+    left?: string;
+    right?: string;
 }
 
-export function ProfileHero({ coverImage, profileImage, name, title, quote }: ProfileHeroProps) {
+interface ProfileHeroProps {
+    firstName: string;
+    lastName: string;
+    profileImage: string;
+    roles: string[];
+    firstNamePosition: Position;
+    lastNamePosition: Position;
+}
+
+export function ProfileHero({
+    firstName,
+    lastName,
+    profileImage,
+    roles,
+    firstNamePosition,
+    lastNamePosition,
+}: ProfileHeroProps) {
     return (
-        <section className="overflow-hidden">
-            {/* Cover Image with fade-in */}
-            <div className="pt-16">
+        <section className="relative min-h-screen overflow-hidden bg-[#0d1117]">
+            {/* Desktop Layout */}
+            <div className="hidden md:block relative min-h-screen">
+                <div className="container mx-auto relative h-screen">
+                    {/* Image Container */}
+                    <motion.div 
+                        className="absolute top-1/2 pt-16 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <div className="relative w-[500px] h-[500px] group">
+                            <Image
+                                src={profileImage}
+                                alt="Profile"
+                                fill
+                                className="object-cover rounded-full transition-transform duration-300 group-hover:scale-105"
+                                priority
+                            />
+                        </div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className={`${inter.className} text-center mt-8`}
+                        >
+                            {roles.map((role, index) => (
+                                <p key={index} className="text-white/80 text-xl mb-2">
+                                    {role}
+                                </p>
+                            ))}
+                        </motion.div>
+                    </motion.div>
+
+                    {/* First Name with custom position */}
+                    <motion.h1
+                        initial={{ x: -200, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className={`${bangers.className} text-[120px] xl:text-[150px] text-[#FFC857] absolute z-10`}
+                        style={firstNamePosition}
+                    >
+                        {firstName}
+                    </motion.h1>
+
+                    {/* Last Name with custom position */}
+                    <motion.h1
+                        initial={{ x: 200, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className={`${bangers.className} text-[120px] xl:text-[150px] text-[#FFC857] absolute z-10`}
+                        style={lastNamePosition}
+                    >
+                        {lastName}
+                    </motion.h1>
+                </div>
+            </div>
+
+            {/* Mobile Layout */}
+            <div className="md:hidden flex flex-col items-center px-4 py-16 min-h-screen">
+                <motion.h1
+                    initial={{ x: -100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className={`${bangers.className} text-6xl text-[#FFC857] mb-8`}
+                >
+                    {firstName}
+                </motion.h1>
+
                 <motion.div
                     initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="relative w-full h-[300px] md:h-[400px]"
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="relative w-full max-w-[300px] aspect-square mb-8"
                 >
                     <Image
-                        src={coverImage}
-                        alt="Cover"
+                        src={profileImage}
+                        alt="Profile"
                         fill
-                        className="object-cover md:object-[0px_-90px]"
+                        className="object-cover rounded-full"
                         priority
                     />
-                    {/* Add a subtle gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d1117]/80" />
                 </motion.div>
 
-                {/* Mobile Layout */}
-                <div className="md:hidden flex flex-col items-center text-center">
-                    <motion.div
-                        initial={{ x: -100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                    >
-                        <Avatar className="w-48 h-48 mt-[-100px] border-4 border-[#0d1117]">
-                            <AvatarImage src={profileImage} alt={name} />
-                            <AvatarFallback>{name[0]}</AvatarFallback>
-                        </Avatar>
-                    </motion.div>
-                    <motion.div
-                        initial={{ x: 100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.5 }}
-                        className="mt-6 space-y-2"
-                    >
-                        <h1 className="text-4xl font-bold text-[#FFC857] font-inter">
-                            {name}
-                        </h1>
-                        <p className="text-lg text-[#4B9CD3] font-inter">
-                            {title}
-                        </p>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Desktop Layout */}
-            <div className="container mx-auto px-16 -mt-24 hidden md:block">
-                <div className="flex items-center gap-6 mb-8">
-                    <motion.div
-                        initial={{ x: -100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                    >
-                        <Avatar className="w-32 h-32 md:w-[300px] md:h-[300px] border-4 border-[#0d1117]">
-                            <AvatarImage src={profileImage} alt={name} />
-                            <AvatarFallback>{name[0]}</AvatarFallback>
-                        </Avatar>
-                    </motion.div>
-                    <motion.div
-                        initial={{ x: 100, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.5 }}
-                        className="flex flex-col mt-16"
-                    >
-                        <h1 className="text-4xl md:text-8xl font-bold text-[#FFC857] font-inter">
-                            {name}
-                        </h1>
-                        <p className="text-lg md:text-2xl text-[#4B9CD3] mt-2 font-inter">
-                            {title}
-                        </p>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Quote - Slides in from bottom */}
-            {quote && (
-                <motion.div
-                    initial={{ y: 100, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.7 }}
-                    className="my-32 flex justify-center items-center"
+                <motion.h1
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className={`${bangers.className} text-6xl text-[#FFC857] mb-8`}
                 >
-                    <blockquote className="text-3xl md:text-7xl font-bold text-white max-w-5xl font-inter leading-normal md:leading-tight text-center px-4 md:px-0">
-                        &ldquo;{quote}&rdquo;
-                    </blockquote>
+                    {lastName}
+                </motion.h1>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className={`${inter.className} text-center`}
+                >
+                    {roles.map((role, index) => (
+                        <p key={index} className="text-white/80 text-lg mb-2">
+                            {role}
+                        </p>
+                    ))}
                 </motion.div>
-            )}
+            </div>
         </section>
     );
 } 

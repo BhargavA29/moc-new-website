@@ -40,11 +40,13 @@ export default function PriyanshuPage() {
     return (
         <ProfileLayout>
             <ProfileHero
-                coverImage="/media/banner.jpg"
+                firstName="PRIYANSHU"
+                lastName="JAISWAL"
                 profileImage="https://s3-alpha-sig.figma.com/img/e59d/6f52/c004cbea24c5d6df79a0c8c60d28246b?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IkOyETMj4PuGOY6bhRE1-R5vwa2s7Mex3cABQFCNoe2EzAXtbU2fZAzPmiZvdZy5KywJdoX61IrZ0WPVvfaU0hvqxE~c1HSuSIGKoSPn50J9kxKTiwgTUZqc-Yut~Bn56s-h09geQ3No9pSd3h4LA64U~nN5H7pVqilKs5-P7Z~wDs7WJI36TC1MEoWulrBQFKcJ3axcfdREedIIQ5acQSVGzcTFm~WYTLoTPWUYrCwIF~4a76iumbU-H9w3fdtWg3UhBmkovO42Bkjqzdo2KM8i9Givplh8e9aafkocPuCyix8RlV07D5tIcVhWG-qcKZJ0mtbmPgEir~UfkPBbow__"
-                name="PRIYANSHU JAISWAL"
-                title="Founder - PJ Explained | Co-Founder - MoC"
-                quote="My fans love the genuine reactions i give about movies, and my passion for storytelling"
+                roles={["Founder - PJ Explained", "Co-Founder - MoC"]}
+                firstNamePosition={{ top: '10%', left: '10%'}}
+                lastNamePosition={{ bottom: '16%', right: '18%'}}
+              
             />
             <ContentGrid items={contentItems} />
             <ProfileStats channelId="UCWkHlUiYLeRSIMP8yM7rxxg" />

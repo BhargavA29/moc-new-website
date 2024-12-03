@@ -9,7 +9,6 @@ export function useCountAnimation(endValue: number, duration: number, isVisible:
             return;
         }
 
-        // Don't animate if the end value is 0
         if (endValue === 0) {
             setCount(0);
             return;
@@ -18,17 +17,31 @@ export function useCountAnimation(endValue: number, duration: number, isVisible:
         let startTime: number;
         let animationFrame: number;
 
+        // Easing function for smoother animation
+        const easeOutQuart = (x: number): number => {
+            return 1 - Math.pow(1 - x, 4);
+        };
+
         const animate = (currentTime: number) => {
             if (!startTime) {
                 startTime = currentTime;
             }
 
-            const progress = (currentTime - startTime) / duration;
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
 
             if (progress < 1) {
-                // Round to 2 decimal places during animation to prevent glitchy numbers
-                const currentValue = endValue * Math.min(progress, 1);
-                setCount(Math.round(currentValue * 100) / 100);
+                // Apply easing and handle decimal places more smoothly
+                const easedProgress = easeOutQuart(progress);
+                const currentValue = endValue * easedProgress;
+
+                // For numbers less than 100, keep one decimal
+                // For larger numbers, round to whole numbers
+                const roundedValue = endValue < 100
+                    ? Math.round(currentValue * 10) / 10
+                    : Math.round(currentValue);
+
+                setCount(roundedValue);
                 animationFrame = requestAnimationFrame(animate);
             } else {
                 setCount(endValue);

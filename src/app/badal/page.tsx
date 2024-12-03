@@ -1,14 +1,15 @@
+'use client';
+
 import { ProfileLayout } from "@/components/profile/ProfileLayout";
 import { ProfileHero } from "@/components/profile/ProfileHero";
 import { ContentGrid } from "@/components/profile/ContentGrid";
 import { ProfileStats } from "@/components/profile/ProfileStats";
 import { SocialLinks } from "@/components/profile/SocialLinks";
-import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-    title: 'Badal Yadav | Men of Culture',
-    description: 'Founder - BnfTV | Co-Founder - MoC',
-}
+import { useImageLoader } from "@/hooks/useImageLoader";
+import { AnimatePresence } from "framer-motion";
+import { LoadingScreen } from "@/components/loading-screen";
+
 
 const contentItems = [
     {
@@ -37,9 +38,20 @@ const socialLinks = {
 };
 
 export default function BadalPage() {
-    return (
+    const imageUrls = [
+        'https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg'
+        // Add all image URLs used in the profile page
+    ];
 
-        <ProfileLayout>
+    const imagesLoaded = useImageLoader(imageUrls);
+    return (
+        <>
+            <AnimatePresence>
+                {!imagesLoaded && <LoadingScreen />}
+            </AnimatePresence>
+
+            {imagesLoaded && (
+                <ProfileLayout>
             <ProfileHero
                 profileImage="https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg"
                 firstName="BADAL"
@@ -50,7 +62,9 @@ export default function BadalPage() {
             />
             <ContentGrid items={contentItems} />
             <ProfileStats channelId="UCUinnqDgIsNFleLdkZKbP-w" />
-            <SocialLinks   {...socialLinks} />
-        </ProfileLayout>
+                    <SocialLinks   {...socialLinks} />
+                </ProfileLayout>
+            )}
+        </>
     );
 }

@@ -1,14 +1,14 @@
+'use client';
+
 import { ProfileLayout } from "@/components/profile/ProfileLayout";
 import { ProfileHero } from "@/components/profile/ProfileHero";
 import { ContentGrid } from "@/components/profile/ContentGrid";
 import { ProfileStats } from "@/components/profile/ProfileStats";
 import { SocialLinks } from "@/components/profile/SocialLinks";
-import type { Metadata } from 'next'
 
-export const metadata: Metadata = {
-    title: 'Mohit Yodha | Men of Culture',
-    description: 'Founder - ComicVerse | Co-Founder - MoC',
-}
+import { AnimatePresence } from "framer-motion";
+import { LoadingScreen } from "@/components/loading-screen";
+import { useImageLoader } from "@/hooks/useImageLoader";
 
 const contentItems = [
     {
@@ -37,7 +37,19 @@ const socialLinks = {
 };
 
 export default function MohitPage() {
+    const imageUrls = [
+        'https://pbs.twimg.com/profile_images/1677944567155552257/9RIHfcOd_400x400.jpg',
+        // Add all image URLs used in the profile page
+    ];
+
+    const imagesLoaded = useImageLoader(imageUrls);
     return (
+        <>
+            <AnimatePresence>
+                {!imagesLoaded && <LoadingScreen />}
+            </AnimatePresence>
+
+            {imagesLoaded && (
         <ProfileLayout>
             <ProfileHero
                 firstName="MOHIT"
@@ -50,7 +62,9 @@ export default function MohitPage() {
             />
             <ContentGrid items={contentItems} />
             <ProfileStats channelId="UCKQ5Jj35sjTmJigRtlCPhVQ" />
-            <SocialLinks {...socialLinks} />
-        </ProfileLayout>
+                    <SocialLinks {...socialLinks} />
+                </ProfileLayout>
+            )}
+        </>
     );
 } 

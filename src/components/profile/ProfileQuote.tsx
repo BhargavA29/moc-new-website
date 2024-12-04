@@ -40,7 +40,7 @@ export function ProfileQuote({ quote }: ProfileQuoteProps) {
                     className="max-w-6xl mx-auto"
                 >
                     <p className={`${inter.className} text-7xl text-white font-bold italic text-left leading-normal`}>
-                        "{quote}"
+                        &ldquo;{quote}&rdquo;
                     </p>
                 </motion.div>
             </div>

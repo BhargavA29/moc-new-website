@@ -44,8 +44,7 @@ export function Navbar() {
             <nav className="flex items-center justify-between h-16">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2">
-
-                    <span className="honk-brand text-xl md:text-3xl">MEN OF CULTURE</span>
+                    <span className="text-xl md:text-3xl text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>MEN OF CULTURE</span>
                 </Link>
 
                 {/* Desktop Navigation Links - Simple Highlight with Smooth Hover */}

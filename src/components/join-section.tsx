@@ -20,61 +20,67 @@ export function JoinSection() {
                             </p>
                             <div className="space-y-6">
                                 <Link
-                                    href="https://www.youtube.com/@menofculturepodcast"
+                                    href="https://www.youtube.com/@menofculture"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-3 text-xl group"
+                                    className="flex items-center gap-3 text-xl w-fit"
                                 >
-                                    <div className="rounded-full group-hover:bg-[#FF0000] p-2 transition-all duration-300">
-                                        <Image
-                                            src="https://img.icons8.com/?size=100&id=37325&format=png&color=FFFFFF"
-                                            alt="YouTube"
-                                            height={40}
-                                            width={40}
-                                        />
+                                    <div className="flex items-center gap-3 hover:scale-105 transition-transform duration-200">
+                                        <div className="rounded-full p-2">
+                                            <Image
+                                                src="https://img.icons8.com/?size=100&id=37325&format=png&color=FFFFFF"
+                                                alt="YouTube"
+                                                height={40}
+                                                width={40}
+                                            />
+                                        </div>
+                                        <span className="text-[#FFA500] text-lg md:text-xl">YouTube</span>
+                                        <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
                                     </div>
-                                    <span className="text-[#FFA500] text-lg md:text-xl group-hover:text-[#FF0000] transition-all duration-300">YouTube</span>
-                                    <svg className="w-5 h-5 text-[#FFA500] group-hover:text-[#FF0000] transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
                                 </Link>
                                 <Link
                                     href="https://www.snapchat.com/add/menofculture24?share_id=us5esu2zD8E&locale=en-GB"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-3 text-xl group"
+                                    className="flex items-center gap-3 text-xl w-fit"
                                 >
-                                    <div className="rounded-full group-hover:bg-[#fffc00] p-2 transition-all duration-300">
-                                        <Image
-                                            src="https://img.icons8.com/?size=100&id=23029&format=png&color=FFFFFF"
-                                            alt="Snapchat"
-                                            height={40}
-                                            width={40}
-                                        />
+                                    <div className="flex items-center gap-3 hover:scale-105 transition-transform duration-200">
+                                        <div className="rounded-full p-2">
+                                            <Image
+                                                src="https://img.icons8.com/?size=100&id=23029&format=png&color=FFFFFF"
+                                                alt="Snapchat"
+                                                height={40}
+                                                width={40}
+                                            />
+                                        </div>
+                                        <span className="text-[#FFA500] text-lg md:text-xl">Snapchat</span>
+                                        <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
                                     </div>
-                                    <span className="text-[#FFA500] text-lg md:text-xl group-hover:text-[#fffc00] transition-all duration-300">Snapchat</span>
-                                    <svg className="w-5 h-5 text-[#FFA500] group-hover:text-[#fffc00] transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
                                 </Link>
                                 <Link
                                     href="https://discord.gg/GAnTMVurm4"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-3 text-xl group"
+                                    className="flex items-center gap-3 text-xl w-fit"
                                 >
-                                    <div className="rounded-full group-hover:bg-[#5865F2] p-2 transition-all duration-300">
-                                        <Image
-                                            src="https://img.icons8.com/?size=100&id=25627&format=png&color=FFFFFF"
-                                            alt="Discord"
-                                            height={40}
-                                            width={40}
-                                        />
+                                    <div className="flex items-center gap-3 hover:scale-105 transition-transform duration-200">
+                                        <div className="rounded-full p-2">
+                                            <Image
+                                                src="https://img.icons8.com/?size=100&id=25627&format=png&color=FFFFFF"
+                                                alt="Discord"
+                                                height={40}
+                                                width={40}
+                                            />
+                                        </div>
+                                        <span className="text-[#FFA500] text-lg md:text-xl">Discord</span>
+                                        <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
                                     </div>
-                                    <span className="text-[#FFA500] text-lg md:text-xl group-hover:text-[#5865F2] transition-all duration-300">Discord</span>
-                                    <svg className="w-5 h-5 text-[#FFA500] group-hover:text-[#5865F2] transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
                                 </Link>
                             </div>
                         </div>
@@ -93,20 +99,22 @@ export function JoinSection() {
                                     href="mailto:contact@menofculture.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-3 text-xl"
+                                    className="flex items-center gap-3 text-xl w-fit"
                                 >
-                                    <div>
-                                        <Image
-                                            src="https://img.icons8.com/?size=100&id=rUgzXdXFnhmg&format=png&color=FFFFFF"
-                                            alt="Email"
-                                            width={30}
-                                            height={30}
-                                        />
+                                    <div className="flex items-center gap-3 hover:scale-105 transition-transform duration-200">
+                                        <div>
+                                            <Image
+                                                src="https://img.icons8.com/?size=100&id=rUgzXdXFnhmg&format=png&color=FFFFFF"
+                                                alt="Email"
+                                                width={30}
+                                                height={30}
+                                            />
+                                        </div>
+                                        <span className="text-[#FFA500] text-lg md:text-xl">Email us</span>
+                                        <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
                                     </div>
-                                    <span className="text-[#FFA500] text-lg md:text-xl">Email us</span>
-                                    <svg className="w-5 h-5 text-[#FFA500]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
                                 </Link>
                             </div>
                         </div>

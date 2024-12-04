@@ -15,8 +15,8 @@ const footerLinks = {
         { name: 'News', href: '#' },
     ],
     socials: [
-        { name: 'Instagram', href: '#' },
-        { name: 'Discord', href: '#' },
+        { name: 'Instagram', href: 'https://www.instagram.com/menofculture.69', target: '_blank' },
+        { name: 'Discord', href: 'https://discord.gg/GAnTMVurm4', target: '_blank' },
     ],
 }
 
@@ -29,7 +29,7 @@ export function Footer() {
                         {/* Brand Column */}
                         <div className="col-span-2 sm:col-span-2 md:col-span-1">
                             <div className="flex items-center gap-2 mb-6">
-                                <span className="honk-brand text-2xl">MEN OF CULTURE</span>
+                                <span className="text-2xl text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>MEN OF CULTURE</span>
                             </div>
                             <p className="text-gray-400 text-sm md:text-base">
                                 Where comedy meets <br className="hidden md:block" />
@@ -80,6 +80,7 @@ export function Footer() {
                                     <li key={link.name}>
                                         <Link
                                             href={link.href}
+                                            target={link.target}
                                             className="text-[#ffc757] hover:text-[#FFAA00] transition-colors"
                                         >
                                             {link.name}

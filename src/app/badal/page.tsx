@@ -9,6 +9,7 @@ import { SocialLinks } from "@/components/profile/SocialLinks";
 import { useImageLoader } from "@/hooks/useImageLoader";
 import { AnimatePresence } from "framer-motion";
 import { LoadingScreen } from "@/components/loading-screen";
+import { ProfileQuote } from "@/components/profile/ProfileQuote";
 
 
 const contentItems = [
@@ -59,6 +60,9 @@ export default function BadalPage() {
                 roles={["Founder - BnfTV", "Co-Founder - MoC"]}
                 firstNamePosition={{ top: '15%', left: '20%' }}
                 lastNamePosition={{ bottom: '15%', right: '25%' }}
+            />
+            <ProfileQuote 
+                quote="My fans love the genuine reactions i give about movies, and my passion for storytelling"
             />
             <ContentGrid items={contentItems} />
             <ProfileStats channelId="UCUinnqDgIsNFleLdkZKbP-w" />

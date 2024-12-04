@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion';
 import { Bangers } from 'next/font/google';
+import Marquee from 'react-fast-marquee';
 
 const bangers = Bangers({
     weight: '400',
@@ -30,33 +31,23 @@ export function Hero() {
                 </video>
             </motion.div>
 
-            {/* Overlay - Modified for left-to-right gradient */}
-            <div className="absolute inset-0 z-0">
-                {/* Mobile overlay (full dark) */}
-                <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/70 to-black/80" />
-                
-                {/* Desktop overlay (left to right gradient) */}
-                <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/100 via-black/60 to-transparent" />
-            </div>
+            {/* Modified Overlay - Bottom to Top gradient */}
+            <div className="absolute inset-0 z-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
-            {/* Content */}
-            <div className="container mx-auto px-4 md:px-16 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, x: -100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                        duration: 0.8,
-                        delay: 0.5,
-                        ease: [0.21, 0.47, 0.32, 0.98]
-                    }}
-                    className="max-w-[90%] sm:max-w-2xl"
+            {/* Marquee Text */}
+            <div className="absolute bottom-6 w-full z-10">
+                <Marquee
+                    speed={150} // Adjust this value to control speed (lower = slower)
+                    gradient={false}
+                    className="overflow-hidden"
                 >
-                    <h1 className={`text-2xl font-bangers sm:text-3xl md:text-8xl font-bold text-[#FFC857] leading-tight ${bangers.className}`}>
-                        We make<br />
-                        conversations <br />
-                        around cinema
-                    </h1>
-                </motion.div>
+                    <div className={`${bangers.className} text-[#FFC857] text-4xl md:text-9xl whitespace-nowrap flex items-center`}>
+                        <span>We make conversations around cinema</span>
+                        <span className="mx-20"> </span> {/* Dot separator with spacing */}
+                        <span>We make conversations around cinema</span>
+                        <span className="mx-20"> </span>
+                    </div>
+                </Marquee>
             </div>
         </section>
     );

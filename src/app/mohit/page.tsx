@@ -9,6 +9,7 @@ import { SocialLinks } from "@/components/profile/SocialLinks";
 import { AnimatePresence } from "framer-motion";
 import { LoadingScreen } from "@/components/loading-screen";
 import { useImageLoader } from "@/hooks/useImageLoader";
+import { ProfileQuote } from "@/components/profile/ProfileQuote";
 
 const contentItems = [
     {
@@ -57,8 +58,10 @@ export default function MohitPage() {
                 profileImage="https://pbs.twimg.com/profile_images/1677944567155552257/9RIHfcOd_400x400.jpg"
                 roles={["Founder - ComicVerse", "Co-Founder - MoC"]}
                 firstNamePosition={{ top: '11%', left: '22%'}}
-                lastNamePosition={{ bottom: '16%', right: '23%'}}
-               
+                lastNamePosition={{ bottom: '16%', right: '23%'}} 
+            />
+            <ProfileQuote 
+                quote="My fans love the genuine reactions i give about movies, and my passion for storytelling"
             />
             <ContentGrid items={contentItems} />
             <ProfileStats channelId="UCKQ5Jj35sjTmJigRtlCPhVQ" />

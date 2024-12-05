@@ -50,7 +50,7 @@ export function ProfileStats({ channelId }: ProfileStatsProps) {
             try {
                 const cacheKey = `youtubeStats_${channelId}`;
                 const now = new Date().getTime();
-                
+
                 // Check cache and its expiry
                 const cachedData = localStorage.getItem(cacheKey);
                 if (cachedData) {
@@ -100,33 +100,33 @@ export function ProfileStats({ channelId }: ProfileStatsProps) {
     }, [channelId]);
 
     return (
-        <section ref={ref} className="relative py-16 md:py-32 px-1 md:px-16 bg-[#0d1117] overflow-hidden">
+        <section ref={ref} className="relative py-[8vh] md:py-[16vh] px-[4vw] md:px-[8vw] bg-[#0d1117] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-t from-[#1E2736] to-[#0d1117]" aria-hidden="true" />
 
-            <motion.div 
-                className="container mx-auto px-4 md:px-16 relative z-10"
+            <motion.div
+                className="container mx-auto px-[4vw] relative z-10"
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <motion.div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-6xl font-bold text-white">
+                <motion.div className="text-center mb-[6vh]">
+                    <h2 className="text-[6vw] md:text-[4vw] font-bold text-white">
                         Milestones
                     </h2>
                 </motion.div>
 
-                <div className="grid grid-cols-3 gap-2 md:gap-8 max-w-4xl mx-auto">
-                    {/* Stats cards */}
+                <div className="grid grid-cols-3 gap-[2vw] md:gap-[4vw] max-w-[90vw] md:max-w-[80vw] mx-auto">
+                    {/* Hours of Content Card */}
                     <Card className="bg-black/20 border-white/10">
-                        <CardContent className="p-4 md:p-8 flex flex-col items-center justify-between h-[140px] md:h-[300px]">
-                            <div className="bg-[#FFC857]/10 p-3 md:p-6 rounded-full">
-                                <TvMinimalPlay className="w-6 h-6 md:w-12 md:h-12 text-[#FFC857]" />
+                        <CardContent className="p-[2vh] md:p-[4vh] flex flex-col items-center justify-between h-[20vh] md:h-[35vh]">
+                            <div className="bg-[#FFC857]/10 p-[1.5vh] md:p-[2vh] rounded-full">
+                                <TvMinimalPlay className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
                             </div>
                             <div className="text-center">
-                                <span className="text-2xl md:text-[64px] font-bold text-[#FFC857]">
+                                <span className="text-[5vw] md:text-[3vw] font-bold text-[#FFC857]">
                                     {hours}+
                                 </span>
-                                <p className="text-sm md:text-2xl text-[#A1A1AA]">
+                                <p className="text-[2vw] md:text-[1.5vw] text-[#A1A1AA]">
                                     hours of content
                                 </p>
                             </div>
@@ -135,15 +135,15 @@ export function ProfileStats({ channelId }: ProfileStatsProps) {
 
                     {/* Views Card */}
                     <Card className="bg-black/20 border-white/10">
-                        <CardContent className="p-4 md:p-8 flex flex-col items-center justify-between h-[140px] md:h-[300px]">
-                            <div className="bg-[#FFC857]/10 p-3 md:p-6 rounded-full">
-                                <Eye className="w-6 h-6 md:w-12 md:h-12 text-[#FFC857]" />
+                        <CardContent className="p-[2vh] md:p-[4vh] flex flex-col items-center justify-between h-[20vh] md:h-[35vh]">
+                            <div className="bg-[#FFC857]/10 p-[1.5vh] md:p-[2vh] rounded-full">
+                                <Eye className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
                             </div>
                             <div className="text-center">
-                                <span className="text-2xl md:text-[64px] font-bold text-[#FFC857]">
+                                <span className="text-[5vw] md:text-[3vw] font-bold text-[#FFC857]">
                                     {views.toFixed(1)}{formattedViews.suffix}
                                 </span>
-                                <p className="text-sm md:text-2xl text-[#A1A1AA]">
+                                <p className="text-[2vw] md:text-[1.5vw] text-[#A1A1AA]">
                                     content views
                                 </p>
                             </div>
@@ -152,15 +152,15 @@ export function ProfileStats({ channelId }: ProfileStatsProps) {
 
                     {/* Subscribers Card */}
                     <Card className="bg-black/20 border-white/10">
-                        <CardContent className="p-4 md:p-8 flex flex-col items-center justify-between h-[140px] md:h-[300px]">
-                            <div className="bg-[#FFC857]/10 p-3 md:p-6 rounded-full">
-                                <Youtube className="w-6 h-6 md:w-12 md:h-12 text-[#FFC857]" />
+                        <CardContent className="p-[2vh] md:p-[4vh] flex flex-col items-center justify-between h-[20vh] md:h-[35vh]">
+                            <div className="bg-[#FFC857]/10 p-[1.5vh] md:p-[2vh] rounded-full">
+                                <Youtube className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
                             </div>
                             <div className="text-center">
-                                <span className="text-2xl md:text-[64px] font-bold text-[#FFC857]">
+                                <span className="text-[5vw] md:text-[3vw] font-bold text-[#FFC857]">
                                     {subscribers.toFixed(2)}{formattedSubs.suffix}
                                 </span>
-                                <p className="text-sm md:text-2xl text-[#A1A1AA]">
+                                <p className="text-[2vw] md:text-[1.5vw] text-[#A1A1AA]">
                                     subscribers
                                 </p>
                             </div>

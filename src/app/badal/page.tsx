@@ -53,19 +53,19 @@ export default function BadalPage() {
 
             {imagesLoaded && (
                 <ProfileLayout>
-            <ProfileHero
-                profileImage="https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg"
-                firstName="BADAL"
-                lastName="YADAV"
-                roles={["Founder - BnfTV", "Co-Founder - MoC"]}
-                firstNamePosition={{ top: '15%', left: '20%' }}
-                lastNamePosition={{ bottom: '15%', right: '25%' }}
-            />
-            <ProfileQuote 
-                quote="My fans love the genuine reactions i give about movies, and my passion for storytelling"
-            />
-            <ContentGrid items={contentItems} />
-            <ProfileStats channelId="UCUinnqDgIsNFleLdkZKbP-w" />
+                    <ProfileHero
+                        profileImage="https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg"
+                        firstName="BADAL"
+                        lastName="YADAV"
+                        roles={["Founder - BnfTV", "Co-Founder - MoC"]}
+                        firstNamePosition={{ top: '10%', left: '22%' }}
+                        lastNamePosition={{ bottom: '15%', right: '25%' }}
+                    />
+                    <ProfileQuote
+                        quote="My fans love the genuine reactions I give about movies, and my passion for storytelling"
+                    />
+                    <ContentGrid items={contentItems} />
+                    <ProfileStats channelId="UCUinnqDgIsNFleLdkZKbP-w" />
                     <SocialLinks   {...socialLinks} />
                 </ProfileLayout>
             )}

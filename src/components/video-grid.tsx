@@ -1,9 +1,8 @@
 'use client'
-
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Youtube } from 'lucide-react'
+import { Eye } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
@@ -110,7 +109,7 @@ function VideoCard({ video, isShort = false, index }: { video: typeof videos[0],
             href={video.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`relative ${isShort ? 'aspect-[9/16]' : 'aspect-video'} bg-zinc-800 rounded-lg overflow-hidden group block`}
+            className={`relative ${isShort ? 'aspect-[9/16]' : 'aspect-video'} bg-zinc-800 rounded-[2vh] overflow-hidden group block transform transition-all duration-200 ease-in-out hover:scale-105 hover:z-30 z-10`}
         >
             <Image
                 src={video.thumbnail}
@@ -132,16 +131,16 @@ function VideoCard({ video, isShort = false, index }: { video: typeof videos[0],
             {/* Overlay with title and icons */}
             <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 {/* Top right views counter */}
-                <div className="absolute top-3 right-3 flex items-center gap-2 bg-black/40 rounded-full px-3 py-1.5 translate-y-[-10px] opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
-                    <Youtube className="w-4 h-4 text-white" />
+                <div className="absolute top-[0.75vh] right-[0.75vh] flex items-center gap-[0.5vw] bg-black/40 rounded-full px-[0.75vw] py-[0.375vh] translate-y-[-1vh] opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                    <Eye className="w-4 h-4 text-white" />
                     <span className="text-white text-sm font-medium">{video.views}</span>
                 </div>
 
                 {/* Gradient overlay for better text visibility */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-[6vh] bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
                 {/* Bottom title with arrow */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-[10px] opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="absolute bottom-0 left-0 right-0 p-[1vh] translate-y-[1vh] opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
                     <div className="flex items-center justify-between gap-4">
                         <p className="text-white font-medium truncate text-shadow">
                             {video.title}
@@ -152,10 +151,10 @@ function VideoCard({ video, isShort = false, index }: { video: typeof videos[0],
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                         >
-                            <path 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth={1.5} 
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
                                 d="M7 17L17 7M17 7H7M17 7V17"
                             />
                         </svg>
@@ -199,14 +198,14 @@ function VideoCard({ video, isShort = false, index }: { video: typeof videos[0],
 
 export function VideoGrid() {
     return (
-        <section className="py-8 md:py-16 px-8 md:px-32">
-            <div className="container mx-auto px-4">
+        <section className="py-[4vh] md:py-[4vh] px-[2vw] md:px-[8vw]">
+            <div className="mx-auto px-[4vw] md:px-[8vw]">
                 {/* Desktop View */}
-                <div className="hidden md:block space-y-4 md:space-y-6">
+                <div className="hidden md:block space-y-[1vh] md:space-y-[1.5vh]">
                     {/* First Main Row */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                        <div className="md:col-span-2 grid gap-4 md:gap-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-[1vh] md:gap-[1.5vh]">
+                        <div className="md:col-span-2 grid gap-[1vh] md:gap-[1.5vh]">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[1vh] md:gap-[1.5vh]">
                                 {videos.slice(0, 2).map((video, index) => (
                                     <VideoCard key={video.id} video={video} index={index} />
                                 ))}
@@ -219,12 +218,12 @@ export function VideoGrid() {
                     </div>
 
                     {/* Second Main Row */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-[1vh] md:gap-[1.5vh]">
                         <div className="hidden md:block h-full">
                             <VideoCard video={videos[4]} index={4} isShort />
                         </div>
-                        <div className="md:col-span-2 grid gap-4 md:gap-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                        <div className="md:col-span-2 grid gap-[1vh] md:gap-[1.5vh]">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[1vh] md:gap-[1.5vh]">
                                 {videos.slice(5, 7).map((video, index) => (
                                     <VideoCard key={video.id} video={video} index={index + 5} />
                                 ))}
@@ -235,39 +234,42 @@ export function VideoGrid() {
                 </div>
 
                 {/* Mobile View with Horizontal Scroll */}
-                <div className="md:hidden w-full">
+                <div className="md:hidden w-full relative">
                     <ScrollArea className="w-full whitespace-nowrap">
-                        <div className="flex gap-8 pb-4">
+                        <div className="flex gap-[2vw] pb-[1vh]">
                             {/* First Column */}
-                            <div className="flex-none w-[600px] flex gap-8">
+                            <div className="flex-none w-[150vw] flex gap-[2vw]">
                                 {/* Regular videos */}
-                                <div className="w-[300px] space-y-8">
+                                <div className="w-[75vw] space-y-[2vh]">
                                     {videos.slice(0, 3).map((video, index) => (
                                         <VideoCard key={video.id} video={video} index={index} />
                                     ))}
                                 </div>
                                 {/* Short video */}
-                                <div className="w-[300px]">
+                                <div className="w-[75vw]">
                                     <VideoCard video={videos[3]} index={3} isShort />
                                 </div>
                             </div>
 
                             {/* Second Column */}
-                            <div className="flex-none w-[600px] flex gap-8">
+                            <div className="flex-none w-[150vw] flex gap-[2vw]">
                                 {/* Regular videos */}
-                                <div className="w-[300px] space-y-8">
+                                <div className="w-[75vw] space-y-[2vh]">
                                     {videos.slice(5, 8).map((video, index) => (
                                         <VideoCard key={video.id} video={video} index={index + 5} />
                                     ))}
                                 </div>
                                 {/* Short video */}
-                                <div className="w-[300px]">
+                                <div className="w-[75vw]">
                                     <VideoCard video={videos[4]} index={4} isShort />
                                 </div>
                             </div>
                         </div>
                         <ScrollBar orientation="horizontal" />
                     </ScrollArea>
+
+                    {/* Right gradient overlay */}
+                    <div className="absolute -right-1 top-0 bottom-0 w-[20vw] bg-gradient-to-l from-black/90 to-transparent z-10 pointer-events-none" />
                 </div>
             </div>
         </section>

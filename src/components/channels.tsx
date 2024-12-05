@@ -31,33 +31,33 @@ const channels = [
 
 function VideoCard({ channel }: { channel: typeof channels[0] }) {
     return (
-        <div className="bg-black/50 rounded-lg p-5 md:p-6 backdrop-blur-sm">
+        <div className="bg-black/50 rounded-[1vh] p-[2vh] md:p-[3vh] backdrop-blur-sm">
             <Image
                 src={channel.image}
                 alt={channel.title}
                 width={300}
                 height={169}
-                className="rounded-lg mb-4 w-full transform transition-transform duration-300 hover:scale-105"
+                className="rounded-[1vh] mb-[2vh] w-full h-auto transform transition-transform duration-300 hover:scale-105"
             />
-            <h3 className="text-xl font-bold mb-3">{channel.title}</h3>
-            <p className="text-gray-400 mb-4 text-base">{channel.description}</p>
+            <h3 className="text-[4vw] md:text-[2vw] font-bold mb-[1vh]">{channel.title}</h3>
+            <p className="text-gray-400 mb-[2vh] text-[3vw] md:text-[1.5vw]">{channel.description}</p>
             <Link
                 href={channel.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#FFC857] hover:text-[#ffd475] text-xl flex justify-between gap-2 group"
+                className="text-[#1E90FF] text-[3vw] md:text-[1.5vw] flex justify-between items-center group"
             >
                 <span>Visit Channel</span>
                 <svg
-                    className="w-8 h-8 transform transition-transform duration-200 group-hover:-translate-y-1"
+                    className="w-[4vw] h-[4vw] md:w-[2vw] md:h-[2vw] transform transition-transform duration-200 group-hover:-translate-y-[0.5vh]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                 >
-                    <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={1.5} 
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
                         d="M7 17L17 7M17 7H7M17 7V17"
                     />
                 </svg>
@@ -73,10 +73,10 @@ export function Channels() {
     });
 
     return (
-        <section ref={ref} className="py-16 md:py-24 bg-[#0d1117] px-8 md:px-16 overflow-hidden">
-            <div className="container mx-auto px-4">
-                <h2 className="text-3xl md:text-6xl font-bold mb-12 md:px-16 md:mb-16">Our Channels</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 md:max-w-6xl md:mx-auto">
+        <section ref={ref} className="py-[8vh] md:py-[12vh] bg-[#0d1117] px-[4vw] md:px-[8vw] overflow-hidden">
+            <div className="mx-auto">
+                <h2 className="text-[8vw] md:text-[4vw] font-bold mb-[2vh] px-[2vw] md:px-0 md:mb-[6vh]">Our Channels</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-[4vh] px-[4vw] md:px-0 md:gap-[3vw]">
                     {channels.map((channel) => (
                         <motion.div
                             key={channel.id}

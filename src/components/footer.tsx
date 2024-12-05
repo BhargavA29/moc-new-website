@@ -17,88 +17,103 @@ const footerLinks = {
     socials: [
         { name: 'Instagram', href: 'https://www.instagram.com/menofculture.69', target: '_blank' },
         { name: 'Discord', href: 'https://discord.gg/GAnTMVurm4', target: '_blank' },
-    ],
+        { name: 'Snapchat', href: 'https://www.snapchat.com/add/menofculture24?share_id=us5esu2zD8E&locale=en-GB', target: '_blank' },
+    ]
 }
 
 export function Footer() {
     return (
         <MotionWrapper>
-            <footer className="bg-[#0d1117] py-8 md:py-16 border-t border-white/10 px-16 md:px-16 lg:px-32 text-base md:text-xl">
-                <div className="container mx-auto">
-                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-24 mb-12">
-                        {/* Brand Column */}
-                        <div className="col-span-2 sm:col-span-2 md:col-span-1">
-                            <div className="flex items-center gap-2 mb-6">
-                                <span className="text-2xl text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>MEN OF CULTURE</span>
+            <footer className="bg-[#0d1117] py-[4vh] md:py-[8vh] border-t border-white/10 px-[6vw] md:px-[8vw]">
+                <div className="mx-auto">
+                    <div className="flex flex-col gap-[4vh]">
+                        <div className="w-full block md:hidden">
+                            <div className="flex items-center gap-[1vw] mb-[2vh]">
+                                <span className="text-[6vw] md:text-[2vw] text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>
+                                    MEN OF CULTURE
+                                </span>
                             </div>
-                            <p className="text-gray-400 text-sm md:text-base">
-                                Where comedy meets <br className="hidden md:block" />
-                                culture, and entertainment <br className="hidden md:block" />
-                                knows no bounds
+                            <p className="text-gray-400 text-[3vw] md:text-[1vw]">
+                                Where comedy meets culture, and entertainment knows no bounds
                             </p>
                         </div>
 
-                        {/* Quick Links */}
-                        <div>
-                            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">Quick Links</h3>
-                            <ul className="space-y-2">
-                                {footerLinks.quickLinks.map((link) => (
-                                    <li key={link.name}>
-                                        <Link
-                                            href={link.href}
-                                            className="text-[#ffc757] hover:text-[#FFAA00] transition-colors"
-                                        >
-                                            {link.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        {/* Links Section - Row layout on mobile */}
+                        <div className="grid grid-cols-3 md:grid-cols-4 gap-[4vw] md:gap-[4vw]">
+                            {/* Brand Column - Full width on mobile */}
+                            <div className="w-full hidden md:block">
+                                <div className="flex items-center gap-[1vw] mb-[2vh]">
+                                    <span className="text-[6vw] md:text-[2vw] text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>
+                                        MEN OF CULTURE
+                                    </span>
+                                </div>
+                                <p className="text-gray-400 text-[3vw] md:text-[1vw]">
+                                    Where comedy meets culture, and entertainment knows no bounds
+                                </p>
+                            </div>
+                            {/* Quick Links */}
+                            <div>
+                                <h3 className="text-[3.5vw] md:text-[1.5vw] font-semibold text-white mb-[1vh]">Quick Links</h3>
+                                <ul className="space-y-[1vh]">
+                                    {footerLinks.quickLinks.map((link) => (
+                                        <li key={link.name}>
+                                            <Link
+                                                href={link.href}
+                                                className="text-[3vw] md:text-[1vw] text-[#ffc757] hover:text-[#FFAA00] transition-colors"
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
 
-                        {/* Team */}
-                        <div>
-                            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">Team</h3>
-                            <ul className="space-y-2">
-                                {footerLinks.team.map((link) => (
-                                    <li key={link.name}>
-                                        <Link
-                                            href={link.href}
-                                            className="text-[#ffc757] hover:text-[#FFAA00] transition-colors"
-                                        >
-                                            {link.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                            {/* Team */}
+                            <div>
+                                <h3 className="text-[3.5vw] md:text-[1.5vw] font-semibold text-white mb-[1vh]">Team</h3>
+                                <ul className="space-y-[1vh]">
+                                    {footerLinks.team.map((link) => (
+                                        <li key={link.name}>
+                                            <Link
+                                                href={link.href}
+                                                className="text-[3vw] md:text-[1vw] text-[#ffc757] hover:text-[#FFAA00] transition-colors"
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
 
-                        {/* Socials */}
-                        <div>
-                            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">Socials</h3>
-                            <ul className="space-y-2">
-                                {footerLinks.socials.map((link) => (
-                                    <li key={link.name}>
-                                        <Link
-                                            href={link.href}
-                                            target={link.target}
-                                            className="text-[#ffc757] hover:text-[#FFAA00] transition-colors"
-                                        >
-                                            {link.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+                            {/* Socials */}
+                            <div>
+                                <h3 className="text-[3.5vw] md:text-[1.5vw] font-semibold text-white mb-[1vh]">Socials</h3>
+                                <ul className="space-y-[1vh]">
+                                    {footerLinks.socials.map((link) => (
+                                        <li key={link.name}>
+                                            <Link
+                                                href={link.href}
+                                                target={link.target}
+                                                className="text-[3vw] md:text-[1vw] text-[#ffc757] hover:text-[#FFAA00] transition-colors"
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
+
                     {/* Copyright */}
-                    <div className="border-t border-white/10 pt-8">
-                        <p className="text-gray-400 text-sm text-center">
+                    <div className="border-t border-white/10 mt-[4vh] pt-[2vh]">
+                        <p className="text-gray-400 text-[2.5vw] md:text-[0.9vw] text-center">
                             © {new Date().getFullYear()} Men of Culture. All rights reserved.
                         </p>
                     </div>
                 </div>
             </footer>
         </MotionWrapper>
-    )
+    );
 }

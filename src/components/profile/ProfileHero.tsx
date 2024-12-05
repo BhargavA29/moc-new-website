@@ -44,13 +44,13 @@ export function ProfileHero({
             <div className="hidden md:block relative min-h-screen">
                 <div className="container mx-auto relative h-screen">
                     {/* Image Container */}
-                    <motion.div 
-                        className="absolute top-1/2 pt-16 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    <motion.div
+                        className="absolute top-1/2 pt-[8vh] left-1/2 -translate-x-1/2 -translate-y-1/2"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className="relative w-[500px] h-[500px] group">
+                        <div className="relative w-[33vw] h-[33vw] max-w-[600px] max-h-[600px] group">
                             <Image
                                 src={profileImage}
                                 alt="Profile"
@@ -63,10 +63,10 @@ export function ProfileHero({
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
-                            className={`${inter.className} text-center mt-8`}
+                            className={`${inter.className} text-center mt-[4vh]`}
                         >
                             {roles.map((role, index) => (
-                                <p key={index} className="text-white/80 text-xl mb-2">
+                                <p key={index} className="text-white/80 text-[1.3vw] mb-[1vh]">
                                     {role}
                                 </p>
                             ))}
@@ -78,7 +78,7 @@ export function ProfileHero({
                         initial={{ x: -200, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className={`${bangers.className} text-[120px] xl:text-[150px] text-[#FFC857] absolute z-10`}
+                        className={`${bangers.className} text-[10vw] text-[#FFC857] absolute z-10`}
                         style={firstNamePosition}
                     >
                         {firstName}
@@ -89,7 +89,7 @@ export function ProfileHero({
                         initial={{ x: 200, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className={`${bangers.className} text-[120px] xl:text-[150px] text-[#FFC857] absolute z-10`}
+                        className={`${bangers.className} text-[10vw] text-[#FFC857] absolute z-10`}
                         style={lastNamePosition}
                     >
                         {lastName}
@@ -98,40 +98,42 @@ export function ProfileHero({
             </div>
 
             {/* Mobile Layout */}
-            <div className="md:hidden flex flex-col items-center px-4 py-16 min-h-screen">
-                <motion.h1
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className={`${bangers.className} text-6xl text-[#FFC857] mb-8`}
-                >
-                    {firstName}
-                </motion.h1>
+            <div className="md:hidden flex flex-col items-center px-[4vw] py-[16vh] min-h-screen">
+
 
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="relative w-full max-w-[300px] aspect-square mb-8"
+                    className="relative w-full max-w-[80vw] aspect-square mb-[1vh]"
                 >
                     <Image
                         src={profileImage}
                         alt="Profile"
                         fill
-                        className="object-cover rounded-full"
+                        className="object-cover transition-transform duration-300 hover:scale-105 rounded-full"
                         priority
                     />
                 </motion.div>
+                <div className='flex gap-[3vw]  '>
+                    <motion.h1
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className={`${bangers.className} text-[13vw] text-[#FFC857] `}
+                    >
+                        {firstName}
+                    </motion.h1>
 
-                <motion.h1
-                    initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className={`${bangers.className} text-6xl text-[#FFC857] mb-8`}
-                >
-                    {lastName}
-                </motion.h1>
-
+                    <motion.h1
+                        initial={{ x: 100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className={`${bangers.className} text-[13vw] text-[#FFC857] mb-[4vh]`}
+                    >
+                        {lastName}
+                    </motion.h1>
+                </div>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -139,7 +141,7 @@ export function ProfileHero({
                     className={`${inter.className} text-center`}
                 >
                     {roles.map((role, index) => (
-                        <p key={index} className="text-white/80 text-lg mb-2">
+                        <p key={index} className="text-white/80 text-[4vw] mb-[1vh]">
                             {role}
                         </p>
                     ))}

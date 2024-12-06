@@ -17,13 +17,13 @@ interface SocialLinksProps {
 export function SocialLinks({ links }: SocialLinksProps) {
     const getPlatformStyle = (platform: string): string => {
         switch (platform) {
-            case 'youtube': 
+            case 'youtube':
                 return 'bg-[#FF0000]';
-            case 'instagram': 
+            case 'instagram':
                 return 'relative overflow-hidden';
-            case 'twitter': 
+            case 'twitter':
                 return 'bg-black';
-            default: 
+            default:
                 return '';
         }
     };
@@ -50,8 +50,8 @@ export function SocialLinks({ links }: SocialLinksProps) {
     };
 
     return (
-        <section className="py-12 md:py-32 px-4 md:px-16 overflow-hidden">
-            <div className="container mx-auto px-4 md:px-16">
+        <section className="py-12 md:py-32 md:px-16 overflow-hidden">
+            <div className="mx-auto  md:px-16">
                 <motion.div
                     className="mb-8 md:mb-16 px-4 md:px-2 text-center"
                     initial={{ opacity: 0, y: 20 }}
@@ -96,7 +96,7 @@ export function SocialLinks({ links }: SocialLinksProps) {
                                         priority
                                     />
                                 )}
-                                
+
                                 <div className="absolute top-4 md:top-6 left-4 md:left-6 z-10">
                                     {getPlatformIcon(link.platform)}
                                 </div>

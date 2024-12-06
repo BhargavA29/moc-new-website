@@ -58,13 +58,13 @@ export function Hero() {
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
             {/* Marquee Text - Fixed Sizing for md and above */}
-            <div className="absolute bottom-[2vh] w-full z-20">
+            <div className="absolute bottom-[8vh] md:bottom-[1vh] w-full z-20">
                 <Marquee speed={marqueeSpeed} gradient={false} className="overflow-hidden">
                     <div
                         className={`${bangers.className} text-[#FFC857] text-[clamp(2rem,5vw,4rem)] whitespace-nowrap flex items-center`}
                     >
                         {/* First span with original fill styling */}
-                        <span className="mx-[2vw] text-[12vw] md:text-[8vw] ">We make conversations around cinema</span>
+                        <span className="mx-[2vw] text-[20vw] md:text-[8vw] ">We make conversations around cinema</span>
 
                         {/* Clapperboard separator with fixed sizing */}
                         <span className="mx-[2vw]">
@@ -81,14 +81,14 @@ export function Hero() {
                                 color="#FFC857"
                                 width={0}
                                 height={0}
-                                style={{ width: '10vw', height: '10vw' }}
+                                style={{ width: '12vw', height: '12vw' }}
                                 strokeWidth={1}
                             />
                         </span>
 
                         {/* Second span with improved visibility */}
                         <span
-                            className="text-[12vw] md:text-[8vw] mx-[2vw]"
+                            className="text-[20vw] md:text-[8vw] mx-[2vw]"
                             style={{
                                 WebkitTextStroke: '2px #FFC857',
                                 color: 'transparent',
@@ -112,7 +112,7 @@ export function Hero() {
                                 color="#FFC857"
                                 width={0}
                                 height={0}
-                                style={{ width: '10vw', height: '10vw' }}
+                                style={{ width: '12vw', height: '12vw' }}
                                 strokeWidth={1}
                             />
                         </span>

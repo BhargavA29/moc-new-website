@@ -4,6 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 const channels = [
     {
@@ -31,38 +37,110 @@ const channels = [
 
 function VideoCard({ channel }: { channel: typeof channels[0] }) {
     return (
-        <div className="bg-black/50 rounded-[1vh] p-[2vh] md:p-[3vh] backdrop-blur-sm">
-            <Image
-                src={channel.image}
-                alt={channel.title}
-                width={300}
-                height={169}
-                className="rounded-[1vh] mb-[2vh] w-full h-auto transform transition-transform duration-300 hover:scale-105"
-            />
-            <h3 className="text-[4vw] md:text-[2vw] font-bold mb-[1vh]">{channel.title}</h3>
-            <p className="text-gray-400 mb-[2vh] text-[3vw] md:text-[1.5vw]">{channel.description}</p>
+        <>
+            {/* Mobile View - Unchanged */}
             <Link
                 href={channel.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#1E90FF] text-[3vw] md:text-[1.5vw] flex justify-between items-center group"
+                className="block md:hidden"
             >
-                <span>Visit Channel</span>
-                <svg
-                    className="w-[4vw] h-[4vw] md:w-[2vw] md:h-[2vw] transform transition-transform duration-200 group-hover:-translate-y-[0.5vh]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M7 17L17 7M17 7H7M17 7V17"
-                    />
-                </svg>
+                <div className="bg-black/50 rounded-[2vh] overflow-hidden">
+                    <div className="relative">
+                        <Image
+                            src={channel.image}
+                            alt={channel.title}
+                            width={500}
+                            height={100}
+                            className="w-full h-auto"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-[2vh]">
+                            <h3 className="text-[4vw] font-bold text-white mb-[1vh]">{channel.title}</h3>
+                            <p className="text-[3vw] text-white/80 line-clamp-2 mb-[1vh]">{channel.description}</p>
+                            <div className="flex items-center justify-between text-[#1E90FF] text-[3vw]">
+                                <span>Visit channel</span>
+                                <svg
+                                    className="w-[4vw] h-[4vw]"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={1.5}
+                                        d="M7 17L17 7M17 7H7M17 7V17"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </Link>
-        </div>
+
+            {/* New Desktop Design - With synchronized hover effects */}
+            <Link
+                href={channel.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:block group"
+            >
+                <div className="bg-black/50 rounded-[1vh] overflow-hidden">
+                    <div className="relative">
+                        <div className="overflow-hidden">
+                            <Image
+                                src={channel.image}
+                                alt={channel.title}
+                                width={500}
+                                height={100}
+                                className="w-full h-auto transition-transform duration-200 ease-out group-hover:scale-105"
+                            />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-[2vh]">
+                            <h3 className="text-[1.8vw] font-bold text-white mb-[1vh]">{channel.title}</h3>
+
+                            {/* Description with Tooltip */}
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <p className="text-[1vw] text-white/80 line-clamp-2 mb-[1vh] cursor-pointer">
+                                            {channel.description}
+                                        </p>
+                                    </TooltipTrigger>
+                                    <TooltipContent
+                                        className="bg-zinc-900/95 backdrop-blur-sm border-zinc-800 text-white/90 text-[0.9vw] max-w-[30vw] p-[1vh]"
+                                        side="top"
+                                    >
+                                        {channel.description}
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+
+                            <div className="flex items-center justify-between">
+                                <span className="text-[#1E90FF] text-[1.2vw] font-medium transition-opacity duration-200 group-hover:opacity-80">
+                                    Visit channel
+                                </span>
+                                <svg
+                                    className="w-[2vw] h-[2vw] ml-[1vw] text-[#1E90FF] transform transition-transform duration-200 group-hover:-translate-y-[0.3vh] group-hover:translate-x-[0.3vh]"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={1.5}
+                                        d="M7 17L17 7M17 7H7M17 7V17"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Link>
+        </>
     );
 }
 
@@ -73,10 +151,43 @@ export function Channels() {
     });
 
     return (
-        <section ref={ref} className="py-[8vh] md:py-[12vh] bg-[#0d1117] px-[4vw] md:px-[8vw] overflow-hidden">
+        <section ref={ref} className="py-[8vh] md:py-[16vh] bg-[#0d1117] px-[4vw] md:px-[8vw] overflow-hidden">
             <div className="mx-auto">
-                <h2 className="text-[8vw] md:text-[4vw] font-bold mb-[2vh] px-[2vw] md:px-0 md:mb-[6vh]">Our Channels</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-[4vh] px-[4vw] md:px-0 md:gap-[3vw]">
+                <motion.h2
+                    className="text-[7vw] md:text-[4vw] font-bold text-white mb-[6vh] px-[4vw] md:px-0"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6 }}
+                >
+                    Our Channels
+                </motion.h2>
+
+                {/* Mobile View - Stays the same */}
+                <div className="md:hidden flex flex-col gap-[3vh] px-[4vw]">
+                    {channels.map((channel) => (
+                        <motion.div
+                            key={channel.id}
+                            initial={{
+                                opacity: 0,
+                                y: 50
+                            }}
+                            animate={inView ? {
+                                opacity: 1,
+                                y: 0
+                            } : {}}
+                            transition={{
+                                duration: 0.8,
+                                delay: channel.id * 0.2,
+                                ease: [0.21, 0.47, 0.32, 0.98]
+                            }}
+                        >
+                            <VideoCard channel={channel} />
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Desktop View - Updated Grid */}
+                <div className="hidden md:grid md:grid-cols-3 gap-y-[6vh] gap-x-[3vw] px-[4vw] md:px-0">
                     {channels.map((channel) => (
                         <motion.div
                             key={channel.id}

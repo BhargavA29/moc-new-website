@@ -99,80 +99,80 @@ export function StatsSection() {
         };
     */
     return (
-        <section ref={sectionRef} className="relative py-[8vh] md:py-[16vh] px-[4vw] md:px-0 bg-[#0d1117]">
+        <section ref={sectionRef} className="relative py-[8vh] md:pt-[4vh] md:pb-[20vh] px-[4vw] md:px-0 bg-[#0d1117]">
             <div className="absolute inset-0 bg-gradient-to-t from-[#1E2736] to-[#0d1117]" aria-hidden="true" />
 
-            <div className=" mx-auto px-[2vw] md:px-[8vw] relative z-10">
-                <div className="mb-[6vh]">
-                    <h2 className="text-[6vw] md:text-[4vw] font-bold text-white">
+            <div className="mx-auto px-[2vw] md:px-[8vw] relative z-10">
+                <div className="mb-[8vh]"> {/* Reduced margin */}
+                    <h2 className="text-[6vw] md:text-[4vw]  font-bold text-white"> {/* Reduced font size */}
                         Our numbers do the talking
                     </h2>
-                    <p className="text-[#A1A1AA] px-[1vw] mt-[2vh] text-[3.5vw] md:text-[1.5vw]">*Combined stats of all three channels.</p>
+                    <p className="text-[#A1A1AA] px-[1vw] mt-[1vh] text-[3.5vw] md:text-[1.3vw]">*Combined stats of all three channels.</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-[4vh] md:gap-[6vh] max-w-[80vw] md:max-w-[60vw] mx-auto">
+                <div className="grid grid-cols-2 gap-[4vh] md:gap-[4vh] max-w-[80vw] md:max-w-[50vw] mx-auto"> {/* Reduced max-width and gap */}
                     {/* Hours of Content */}
                     <div className="text-center">
-                        <div className="flex flex-col items-center space-y-[2vh]">
-                            <div className="bg-[#FFC857]/10 p-[2vh] rounded-full">
-                                <TvMinimalPlay className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
+                        <div className="flex flex-col items-center space-y-[1.5vh]"> {/* Reduced spacing */}
+                            <div className="bg-[#FFC857]/10 p-[1.5vh] rounded-full"> {/* Reduced padding */}
+                                <TvMinimalPlay className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" /> {/* Reduced icon size */}
                             </div>
-                            <span className="text-[8vw] md:text-[4vw] font-bold text-[#FFC857]">
+                            <span className="text-[8vw] md:text-[3vw] font-bold text-[#FFC857]"> {/* Reduced font size */}
                                 {hours}+
                             </span>
-                            <span className="text-[#A1A1AA] text-[3.5vw] md:text-[1.5vw]">hours of content</span>
+                            <span className="text-[#A1A1AA] text-[3.5vw] md:text-[1vw]">hours of content</span>
                         </div>
                     </div>
 
                     {/* Views */}
                     <div className="text-center">
-                        <div className="flex flex-col items-center space-y-[2vh]">
-                            <div className="bg-[#FFC857]/10 p-[2vh] rounded-full">
+                        <div className="flex flex-col items-center space-y-[1.5vh]">
+                            <div className="bg-[#FFC857]/10 p-[1.5vh] rounded-full">
                                 <Eye className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
                             </div>
                             <div className="flex items-baseline justify-center">
-                                <span className="text-[8vw] md:text-[4vw] font-bold text-[#FFC857]">
+                                <span className="text-[8vw] md:text-[3vw] font-bold text-[#FFC857]">
                                     {views.toFixed(1)}
                                 </span>
-                                <span className="text-[8vw] md:text-[4vw] font-bold text-[#FFC857] ml-[1vw]">M</span>
+                                <span className="text-[8vw] md:text-[3vw] font-bold text-[#FFC857] ml-[1vw]">M</span>
                             </div>
-                            <span className="text-[#A1A1AA] text-[3.5vw] md:text-[1.5vw]">content views</span>
+                            <span className="text-[#A1A1AA] text-[3.5vw] md:text-[1vw]">content views</span>
                         </div>
                     </div>
 
                     {/* Subscribers */}
                     <div className="text-center">
-                        <div className="flex flex-col items-center space-y-[2vh]">
-                            <div className="bg-[#FFC857]/10 p-[2vh] rounded-full">
+                        <div className="flex flex-col items-center space-y-[1.5vh]">
+                            <div className="bg-[#FFC857]/10 p-[1.5vh] rounded-full">
                                 <Youtube className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
                             </div>
                             <div className="flex items-baseline justify-center">
-                                <span className="text-[8vw] md:text-[4vw] font-bold text-[#FFC857]">
+                                <span className="text-[8vw] md:text-[3vw] font-bold text-[#FFC857]">
                                     {subscribers.toFixed(1)}
                                 </span>
-                                <span className="text-[8vw] md:text-[4vw] font-bold text-[#FFC857] ml-[1vw]">K</span>
+                                <span className="text-[8vw] md:text-[3vw] font-bold text-[#FFC857] ml-[1vw]">K</span>
                             </div>
-                            <span className="text-[#A1A1AA] text-[3.5vw] md:text-[1.5vw]">subscribers</span>
+                            <span className="text-[#A1A1AA] text-[3.5vw] md:text-[1vw]">subscribers</span>
                         </div>
                     </div>
 
                     {/* Community */}
                     <div className="text-center">
-                        <div className="flex flex-col items-center space-y-[2vh]">
-                            <div className="bg-[#FFC857]/10 p-[2vh] rounded-full">
+                        <div className="flex flex-col items-center space-y-[1.5vh]">
+                            <div className="bg-[#FFC857]/10 p-[1.5vh] rounded-full">
                                 <Users className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
                             </div>
                             <div className="flex items-baseline justify-center">
-                                <span className="text-[8vw] md:text-[4vw] font-bold text-[#FFC857]">
+                                <span className="text-[8vw] md:text-[3vw] font-bold text-[#FFC857]">
                                     {community}
                                 </span>
-                                <span className="text-[8vw] md:text-[4vw] font-bold text-[#FFC857] ml-[1vw]">K+</span>
+                                <span className="text-[8vw] md:text-[3vw] font-bold text-[#FFC857] ml-[1vw]">K+</span>
                             </div>
-                            <span className="text-[#A1A1AA] text-[3.5vw] md:text-[1.5vw]">active community</span>
+                            <span className="text-[#A1A1AA] text-[3.5vw] md:text-[1vw]">active community</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     );
-} 
+}

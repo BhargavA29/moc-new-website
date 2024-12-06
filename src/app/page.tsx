@@ -50,7 +50,7 @@ export default function Home() {
             </AnimatePresence>
 
             {isLoaded && (
-                <main className="min-h-screen bg-[#0d1117] text-white">
+                <main className="min-h-screen bg-[#0d1117] font-[Inter] text-white">
                     <Navbar />
                     <Hero />
                     <MotionWrapper>
@@ -75,4 +75,4 @@ export default function Home() {
             )}
         </>
     );
-} 
+}

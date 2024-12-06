@@ -12,15 +12,15 @@ export default function ContactPage() {
             <Navbar />
             <div className="container mx-auto px-16 md:px-auto py-16 md:py-24">
                 <MotionWrapper>
-                    <h1 className="text-4xl md:text-6xl font-bold text-[#FFC857] text-center mb-16">
+                    <h1 className="text-4xl md:text-6xl font-bold text-[#FFC857] text-center mt-4 mb-8">
                         Contact Us
                     </h1>
                 </MotionWrapper>
-                
+
                 <MotionWrapper delay={0.1}>
                     <ContactForm />
                 </MotionWrapper>
-                
+
                 <MotionWrapper delay={0.2}>
                     <ContactInfo />
                 </MotionWrapper>

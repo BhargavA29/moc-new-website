@@ -7,16 +7,16 @@ import { MotionWrapper } from './motion-wrapper'
 
 export function JoinSection() {
     return (
-        <section className="p-[4vh] md:p-[8vh] px-[4vw] md:px-[8vw] bg-[#0d1117]">
+        <section className="p-[4vh] md:p-[8vh] px-[4vw] md:px-[8vw]  bg-[#0d1117]">
             <div className="mx-auto px-[3vw]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[6vh]">
                     {/* Left Section */}
                     <MotionWrapper delay={0.1}>
-                        <div className="space-y-[2vh]">
-                            <h2 className="text-[6vw] md:text-center lg:text-left md:text-[3vw] font-bold">Join the party</h2>
-                            <p className="text-[4vw] text-left md:text-[1.5vw] text-gray-300">
+                        <div className="space-y-[2vh] md:my-[6vh]">
+                            <h2 className="text-[6vw] md:text-center lg:text-left md:text-[2.7vw] font-bold">Join the party</h2>
+                            <p className="text-[4vw] text-left md:text-[1.2vw] text-gray-300">
                                 Explore our engaging content on YouTube and connect with our
-                                vibrant community on Discord. <br className='hidden md:block' /> <span>Join us today!</span>
+                                vibrant community on Discord. <br className='hidden md:block' /> Join us today!
                             </p>
                             <div className="space-y-[2vh]">
                                 <Link
@@ -124,11 +124,11 @@ export function JoinSection() {
 
                     {/* Right Section */}
                     <MotionWrapper delay={0.2}>
-                        <div className="space-y-[2vh] bg-zinc-800/50 rounded-[2vh] p-[3vh] md:p-[4vh]">
-                            <h2 className="text-[6vw] md:text-[3vw] font-bold">Connect</h2>
-                            <p className="text-[4vw] md:text-[1.5vw] text-gray-300">
+                        <div className="space-y-[2vh] bg-zinc-800/50 rounded-[2vh] p-[3vh] md:px-[4vh] md:py-[4vh]  md:mt-[2vh]">
+                            <h2 className="text-[6vw] md:text-[2.7vw] font-bold">Connect</h2>
+                            <p className="text-[4vw] md:text-[1.2vw] text-gray-300">
                                 Explore our engaging content on YouTube and connect with our
-                                vibrant community on Discord. Join us today!
+                                vibrant community on Discord. <br className='hidden md:block' /> Join us today!
                             </p>
                             <div className="pt-[2vh]">
                                 <Link

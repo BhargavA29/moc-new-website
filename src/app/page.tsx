@@ -12,6 +12,7 @@ import { Navbar } from '@/components/navbar'
 
 import { MotionWrapper } from '@/components/motion-wrapper'
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
 // Dynamic import for components that aren't needed immediately
 const VideoGrid = dynamic(() => import('@/components/video-grid').then(mod => mod.VideoGrid), {
@@ -55,35 +56,37 @@ export default function Home() {
     const isLoaded = useImageLoader(mediaUrls);
 
     return (
-        <>
-            <AnimatePresence>
-                {!isLoaded && <LoadingScreen />}
-            </AnimatePresence>
+        <main className="min-h-screenbg-[#0d1117] font-[Inter] text-white">
+            <Navbar />
 
-            {isLoaded && (
-                <main className="min-h-screen bg-[#0d1117] font-[Inter] text-white">
-                    <Navbar />
-                    <Hero />
-                    <MotionWrapper>
-                        <VideoGrid />
-                    </MotionWrapper>
-                    <MotionWrapper delay={0.2}>
-                        <Channels />
-                    </MotionWrapper>
-                    <MotionWrapper delay={0.3}>
-                        <StatsSection />
-                    </MotionWrapper>
-                    <MotionWrapper delay={0.4}>
-                        <Team />
-                    </MotionWrapper>
-                    <MotionWrapper delay={0.5}>
-                        <JoinSection />
-                    </MotionWrapper>
-                    <MotionWrapper>
-                        <Footer />
-                    </MotionWrapper>
-                </main>
-            )}
-        </>
+            {/* Critical content loads first */}
+            <Suspense fallback={<LoadingScreen />}>
+                <Hero />
+            </Suspense>
+
+            {/* Secondary content */}
+            <Suspense fallback={<LoadingScreen />}>
+                <MotionWrapper>
+                    <VideoGrid />
+                </MotionWrapper>
+            </Suspense>
+
+            {/* Less critical content */}
+            <Suspense fallback={<LoadingScreen />}>
+                <MotionWrapper delay={0.2}>
+                    <Channels />
+                </MotionWrapper>
+                <MotionWrapper delay={0.3}>
+                    <StatsSection />
+                </MotionWrapper>
+                <MotionWrapper delay={0.4}>
+                    <Team />
+                </MotionWrapper>
+                <MotionWrapper delay={0.5}>
+                    <JoinSection />
+                </MotionWrapper>
+                <Footer />
+            </Suspense>
+        </main>
     );
 }

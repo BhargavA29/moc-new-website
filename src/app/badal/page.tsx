@@ -54,12 +54,10 @@ export default function BadalPage() {
             {imagesLoaded && (
                 <ProfileLayout>
                     <ProfileHero
+                        coverImage="/media/banner.jpg"
                         profileImage="https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg"
-                        firstName="BADAL"
-                        lastName="YADAV"
-                        roles={["Founder - BnfTV", "Co-Founder - MoC"]}
-                        firstNamePosition={{ top: '10%', left: '22%' }}
-                        lastNamePosition={{ bottom: '15%', right: '25%' }}
+                        name="BADAL YADAV"
+                        title="Founder - BnfTV | Co-Founder - MoC"
                     />
                     <ProfileQuote
                         quote="My fans love the genuine reactions I give about movies, and my passion for storytelling"

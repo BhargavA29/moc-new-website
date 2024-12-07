@@ -154,12 +154,21 @@ export function Channels() {
         <section ref={ref} className="py-[8vh] md:py-[16vh] bg-[#0d1117] px-[4vw] md:px-[8vw] overflow-hidden">
             <div className="mx-auto">
                 <motion.h2
-                    className="text-[7vw] md:text-[4vw] font-bold text-white mb-[6vh] px-[4vw] md:px-0"
+                    className="md:block hidden text-[7vw] md:text-[4vw] font-bold text-white mb-[6vh] px-[4vw] md:px-0"
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
                 >
                     Our Channels
+                </motion.h2>
+
+                <motion.h2
+                    className="block md:hidden text-2xl md:text-[4vw] font-black text-[#FFC857] mb-[2vh] px-[4vw] "
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6 }}
+                >
+                    OUR CHANNELS
                 </motion.h2>
 
                 {/* Mobile View - Stays the same */}

@@ -71,10 +71,10 @@ export function Hero() {
 
     return (
         <section className="relative w-full h-screen min-h-[600px] flex items-end overflow-hidden">
-            {/* Background Video with Fade In - Full Screen Coverage */}
+            {/* Background Video with Fade In */}
             <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: isVideoLoaded ? 1 : 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, ease: 'easeOut' }}
                 className="absolute inset-0 w-full h-full"
             >
@@ -85,7 +85,7 @@ export function Hero() {
                     muted
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover object-center"
-                    poster="/media/backdrop-poster.jpg" // Add a poster image for better initial load
+                    poster="/media/backdrop-poster.jpg"
                 >
                     <source
                         src="/media/backdrop.mp4"

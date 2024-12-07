@@ -40,38 +40,40 @@ export function ContentGrid({ items }: ContentGridProps) {
     };
 
     return (
-        <section ref={ref} className="py-16 px-4 md:px-16 md:py-32">
-            <motion.div 
-                className="container mx-auto px-4 md:px-16 space-y-16 md:space-y-32"
-                variants={containerVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-            >
-                {items.map((item, index) => (
-                    <motion.div
-                        key={index}
-                        variants={itemVariants}
-                        className={`flex flex-col ${item.isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-                            } items-center gap-8 md:gap-16`}
-                    >
-                        <div className="w-full md:w-1/2">
-                            <div className="relative aspect-video">
-                                <Image
-                                    src={item.image}
-                                    alt={item.caption}
-                                    fill
-                                    className="object-cover rounded-xl"
-                                />
+        <section ref={ref} className="py-12 sm:py-16 lg:py-20">
+            <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
+                <motion.div
+                    className="space-y-12 sm:space-y-16 lg:space-y-20"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
+                >
+                    {items.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            variants={itemVariants}
+                            className={`flex flex-col ${item.isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+                                } items-center gap-8 lg:gap-12 max-w-[1400px] mx-auto`}
+                        >
+                            <div className="w-full md:w-1/2">
+                                <div className="relative aspect-video rounded-xl overflow-hidden">
+                                    <Image
+                                        src={item.image}
+                                        alt={item.caption}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="w-full md:w-1/2">
-                            <p className="text-xl md:text-3xl text-white/80 font-inter">
-                                {item.caption}
-                            </p>
-                        </div>
-                    </motion.div>
-                ))}
-            </motion.div>
+                            <div className="w-full md:w-1/2">
+                                <p className="text-base sm:text-lg lg:text-xl text-white/80">
+                                    {item.caption}
+                                </p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
         </section>
     );
 } 

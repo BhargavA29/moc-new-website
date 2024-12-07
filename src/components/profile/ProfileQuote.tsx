@@ -26,8 +26,8 @@ export function ProfileQuote({ quote }: ProfileQuoteProps) {
     }, [controls, inView]);
 
     return (
-        <section className="bg-[#0d1117] md:py-[16vh] pb-[8vh] px-[4vw]">
-            <div className="mx-auto px-[4vw]">
+        <section className="bg-[#0d1117] py-12 sm:py-16 lg:py-20">
+            <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     ref={ref}
                     initial="hidden"
@@ -37,9 +37,9 @@ export function ProfileQuote({ quote }: ProfileQuoteProps) {
                         visible: { opacity: 1, y: 0 },
                     }}
                     transition={{ duration: 0.5, ease: 'easeOut' }}
-                    className="max-w-[90vw] md:max-w-[70vw] mx-auto"
+                    className="max-w-[90%] md:max-w-[80%] lg:max-w-[1200px] mx-auto"
                 >
-                    <p className={`${inter.className} text-[8vw] md:text-[4.8vw] text-white font-bold italic text-left leading-normal`}>
+                    <p className={`${inter.className} text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold italic text-left leading-normal`}>
                         &ldquo;{quote}&rdquo;
                     </p>
                 </motion.div>

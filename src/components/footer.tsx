@@ -24,42 +24,44 @@ const footerLinks = {
 export function Footer() {
     return (
         <MotionWrapper>
-            <footer className="bg-[#0d1117] py-[4vh] md:py-[8vh] border-t border-white/10 px-[6vw] md:px-[8vw]">
-                <div className="mx-auto">
-                    <div className="flex flex-col gap-[4vh]">
-                        <div className="w-full block md:hidden">
-                            <div className="flex items-center gap-[1vw] mb-[2vh]">
-                                <span className="text-[6vw] md:text-[2vw] text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>
+            <footer className="bg-[#0d1117] py-12 sm:py-16 border-t px-8 border-white/10">
+                <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col gap-8 sm:gap-12">
+                        {/* Mobile Brand Section */}
+                        <div className="md:hidden">
+                            <div className="flex items-center mb-4">
+                                <span className="text-2xl sm:text-3xl text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>
                                     MEN OF CULTURE
                                 </span>
                             </div>
-                            <p className="text-gray-400 text-[3vw] md:text-[1vw]">
+                            <p className="text-sm sm:text-base text-gray-400">
                                 Where comedy meets culture, and entertainment knows no bounds
                             </p>
                         </div>
 
-                        {/* Links Section - Row layout on mobile */}
-                        <div className="grid grid-cols-3 md:grid-cols-4 gap-[4vw] md:gap-[4vw]">
-                            {/* Brand Column - Full width on mobile */}
-                            <div className="w-full hidden md:block">
-                                <div className="flex items-center gap-[1vw] mb-[2vh]">
-                                    <span className="text-[6vw] md:text-[2vw] text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>
+                        {/* Links Grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8">
+                            {/* Desktop Brand Column */}
+                            <div className="hidden md:block col-span-1">
+                                <div className="flex items-center mb-4">
+                                    <span className="text-3xl lg:text-4xl text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>
                                         MEN OF CULTURE
                                     </span>
                                 </div>
-                                <p className="text-gray-400 text-[3vw] md:text-[1vw]">
+                                <p className="text-base text-gray-400">
                                     Where comedy meets culture, and entertainment knows no bounds
                                 </p>
                             </div>
+
                             {/* Quick Links */}
                             <div>
-                                <h3 className="text-[3.5vw] md:text-[1.5vw] font-semibold text-white mb-[1vh]">Quick Links</h3>
-                                <ul className="space-y-[1vh]">
+                                <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                                <ul className="space-y-3">
                                     {footerLinks.quickLinks.map((link) => (
                                         <li key={link.name}>
                                             <Link
                                                 href={link.href}
-                                                className="text-[3vw] md:text-[1vw] text-[#ffc757] hover:text-[#FFAA00] transition-colors"
+                                                className="text-sm sm:text-base text-[#ffc757] hover:text-[#FFAA00] transition-colors"
                                             >
                                                 {link.name}
                                             </Link>
@@ -70,13 +72,13 @@ export function Footer() {
 
                             {/* Team */}
                             <div>
-                                <h3 className="text-[3.5vw] md:text-[1.5vw] font-semibold text-white mb-[1vh]">Team</h3>
-                                <ul className="space-y-[1vh]">
+                                <h3 className="text-lg font-semibold text-white mb-4">Team</h3>
+                                <ul className="space-y-3">
                                     {footerLinks.team.map((link) => (
                                         <li key={link.name}>
                                             <Link
                                                 href={link.href}
-                                                className="text-[3vw] md:text-[1vw] text-[#ffc757] hover:text-[#FFAA00] transition-colors"
+                                                className="text-sm sm:text-base text-[#ffc757] hover:text-[#FFAA00] transition-colors"
                                             >
                                                 {link.name}
                                             </Link>
@@ -87,14 +89,14 @@ export function Footer() {
 
                             {/* Socials */}
                             <div>
-                                <h3 className="text-[3.5vw] md:text-[1.5vw] font-semibold text-white mb-[1vh]">Socials</h3>
-                                <ul className="space-y-[1vh]">
+                                <h3 className="text-lg font-semibold text-white mb-4">Socials</h3>
+                                <ul className="space-y-3">
                                     {footerLinks.socials.map((link) => (
                                         <li key={link.name}>
                                             <Link
                                                 href={link.href}
                                                 target={link.target}
-                                                className="text-[3vw] md:text-[1vw] text-[#ffc757] hover:text-[#FFAA00] transition-colors"
+                                                className="text-sm sm:text-base text-[#ffc757] hover:text-[#FFAA00] transition-colors"
                                             >
                                                 {link.name}
                                             </Link>
@@ -105,10 +107,9 @@ export function Footer() {
                         </div>
                     </div>
 
-
                     {/* Copyright */}
-                    <div className="border-t border-white/10 mt-[4vh] pt-[2vh]">
-                        <p className="text-gray-400 text-[2.5vw] md:text-[0.9vw] text-center">
+                    <div className="border-t border-white/10 mt-12 pt-8">
+                        <p className="text-sm text-gray-400 text-center">
                             © {new Date().getFullYear()} Men of Culture. All rights reserved.
                         </p>
                     </div>

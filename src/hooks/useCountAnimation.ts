@@ -17,7 +17,6 @@ export function useCountAnimation(endValue: number, duration: number, isVisible:
         let startTime: number;
         let animationFrame: number;
 
-        // Easing function for smoother animation
         const easeOutQuart = (x: number): number => {
             return 1 - Math.pow(1 - x, 4);
         };
@@ -31,7 +30,6 @@ export function useCountAnimation(endValue: number, duration: number, isVisible:
             const progress = Math.min(elapsedTime / duration, 1);
 
             if (progress < 1) {
-                // Apply easing and handle decimal places more smoothly
                 const easedProgress = easeOutQuart(progress);
                 const currentValue = endValue * easedProgress;
 
@@ -58,4 +56,4 @@ export function useCountAnimation(endValue: number, duration: number, isVisible:
     }, [endValue, duration, isVisible]);
 
     return count;
-} 
+}

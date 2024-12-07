@@ -28,23 +28,24 @@ export function Team() {
     return (
         <section className="py-[4vh] px-[4vw] md:py-[8vh] md:px-[8vw] bg-[#0d1117]">
             <div className="px-[2vw] md:px-0 mx-auto">
-                <h2 className="text-[5vw] sm:text-[5vw] md:text-[4vw] font-bold  text-white">People behind the screen</h2>
-                <p className="text-[3.5vw] sm:text-[3vw] md:text-[1.3vw] text-[#4B5563] mb-[4vh] md:mb-[8vh]">
+                <h2 className="md:hidden font-black text-2xl text-[#FFC857] font-inter">PEOPLE BEHIND THE SCREEN</h2>
+                <h2 className="hidden md:block font-bold text-[4vw] text-white font-inter">People Behind The Screen</h2>
+                <p className="hidden md:block text-[1.3vw] text-[#4B5563] mb-[8vh]">
                     The channel is led by 3 independent YouTubers who
-                    <br className="hidden md:block" />
+                    <br />
                     have a total following of more than 4 million subscribers
-                    <br className="hidden md:block" />
+                    <br />
                     across channels
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[1vh] md:gap-[1vw]">
+                <div className="flex flex-col md:grid md:grid-cols-3 gap-[5vh] md:gap-[1vw] mt-[5vh] md:mt-0">
                     {team.map((member) => (
                         <div
                             key={member.name}
-                            className="text-center"
+                            className="flex items-center md:block md:text-center"
                         >
                             <Link
                                 href={member.link}
-                                className="relative w-[40vw] h-[40vw]  md:w-[20vw] md:h-[20vw] mx-auto mb-[3vh] block group overflow-hidden rounded-full"
+                                className="relative w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] md:mx-auto md:mb-[3vh] block group overflow-hidden rounded-full"
                             >
                                 <Image
                                     src={member.image}
@@ -69,8 +70,10 @@ export function Team() {
                                     </svg>
                                 </div>
                             </Link>
-                            <h3 className="font-bold text-[4vw] sm:text-[3vw] md:text-[2vw] mb-[1vh] text-white">{member.name}</h3>
-                            <p className="text-[#4B5563] text-[3.5vw] sm:text-[2.5vw] md:text-[1.5vw]">{member.role}</p>
+                            <div className="ml-[4vw] md:ml-0">
+                                <h3 className="font-bold text-[5vw] md:text-[2vw] mb-[1vh] text-white font-inter">{member.name}</h3>
+                                <p className="text-[#56799C] text-[4vw] md:text-[1.5vw] font-inter font-medium">{member.role}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

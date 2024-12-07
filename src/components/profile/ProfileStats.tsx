@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useCountAnimation } from '@/hooks/useCountAnimation';
 import { useInView } from 'react-intersection-observer';
-import { TvMinimalPlay, Eye, Youtube } from 'lucide-react';
-import { Card, CardContent } from "@/components/ui/card";
+import { TvMinimalPlay, Eye, Youtube, Instagram } from 'lucide-react';
 import { motion } from "framer-motion";
 
 interface ChannelStats {
@@ -16,6 +15,7 @@ interface ChannelStats {
 interface ProfileStatsProps {
     channelId: string;
 }
+
 
 export function ProfileStats({ channelId }: ProfileStatsProps) {
     const [stats, setStats] = useState<ChannelStats>({
@@ -100,74 +100,149 @@ export function ProfileStats({ channelId }: ProfileStatsProps) {
     }, [channelId]);
 
     return (
-        <section ref={ref} className="relative py-[8vh] md:py-[16vh] px-[4vw] md:px-[8vw] bg-[#0d1117] overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E2736] to-[#0d1117]" aria-hidden="true" />
+        <section ref={ref} className="relative py-12 sm:py-16 bg-[#0d1117] overflow-hidden max-w-[2000px] mx-auto">
+            {/* Desktop View */}
+            <div className="hidden md:block">
+                <motion.div
+                    className="mx-auto px-[8vw] relative z-10"
+                    initial={{ opacity: 0 }}
+                    animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <div className="mb-[8vh]">
+                        <h2 className="text-[4vw] font-bold text-white">
+                            Milestones
+                        </h2>
+                    </div>
 
-            <motion.div
-                className="container mx-auto px-[4vw] relative z-10"
-                initial={{ opacity: 0 }}
-                animate={inView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.6 }}
-            >
-                <motion.div className="text-center mb-[6vh]">
-                    <h2 className="text-[6vw] md:text-[4vw] font-bold text-white">
-                        Milestones
-                    </h2>
-                </motion.div>
-
-                <div className="grid grid-cols-3 gap-[2vw] md:gap-[4vw] max-w-[90vw] md:max-w-[80vw] mx-auto">
-                    {/* Hours of Content Card */}
-                    <Card className="bg-black/20 border-white/10">
-                        <CardContent className="p-[2vh] md:p-[4vh] flex flex-col items-center justify-between h-[20vh] md:h-[35vh]">
-                            <div className="bg-[#FFC857]/10 p-[1.5vh] md:p-[2vh] rounded-full">
-                                <TvMinimalPlay className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
-                            </div>
-                            <div className="text-center">
-                                <span className="text-[5vw] md:text-[3vw] font-bold text-[#FFC857]">
+                    <div className="grid grid-cols-3 gap-[4vh] max-w-[80vw] mx-auto">
+                        {/* Hours of Content */}
+                        <div className="bg-[#161C26] rounded-lg p-8">
+                            <div className="flex flex-col items-center space-y-[2vh]">
+                                <div className="bg-[#FFC857]/10 p-4 rounded-full">
+                                    <TvMinimalPlay className="w-[3vw] h-[3vw] text-[#FFC857]" />
+                                </div>
+                                <span className="text-[3vw] font-bold text-[#FFC857]">
                                     {hours}+
                                 </span>
-                                <p className="text-[2vw] md:text-[1.5vw] text-[#A1A1AA]">
+                                <span className="text-[#A1A1AA] text-[1vw]">
+                                    hours of content
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Views */}
+                        <div className="bg-[#161C26] rounded-lg p-8">
+                            <div className="flex flex-col items-center space-y-[2vh]">
+                                <div className="bg-[#FFC857]/10 p-4 rounded-full">
+                                    <Eye className="w-[3vw] h-[3vw] text-[#FFC857]" />
+                                </div>
+                                <div className="flex items-baseline justify-center">
+                                    <span className="text-[3vw] font-bold text-[#FFC857]">
+                                        {views}{formattedViews.suffix}
+                                    </span>
+                                </div>
+                                <span className="text-[#A1A1AA] text-[1vw]">
+                                    content views
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Subscribers */}
+                        <div className="bg-[#161C26] rounded-lg p-8">
+                            <div className="flex flex-col items-center space-y-[2vh]">
+                                <div className="bg-[#FFC857]/10 p-4 rounded-full">
+                                    <Youtube className="w-[3vw] h-[3vw] text-[#FFC857]" />
+                                </div>
+                                <div className="flex items-baseline justify-center">
+                                    <span className="text-[3vw] font-bold text-[#FFC857]">
+                                        {subscribers}{formattedSubs.suffix}
+                                    </span>
+                                </div>
+                                <span className="text-[#A1A1AA] text-[1vw]">
+                                    subscribers
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* Mobile View */}
+            <div className="md:hidden  bg-background: linear-gradient(180deg, rgba(13, 17, 23, 0) 0%, #2A3B4C 100%);
+ px-6 py-8">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <h2 className="text-[#FFC857] text-2xl font-black font-inter mb-6">
+                        OUR NUMBERS DO THE TALKING...
+                    </h2>
+
+                    <div className="flex flex-col space-y-4">
+                        {/* Hours of Content */}
+                        <div className="bg-[#161C26] rounded-lg p-4 flex items-center">
+                            <div className="bg-[#161C26] p-2 rounded-full">
+                                <TvMinimalPlay className="w-6 h-6 text-[#FFC857]" />
+                            </div>
+                            <div className="ml-4">
+                                <span className="text-white text-2xl font-black font-inter">
+                                    {hours}
+                                </span>
+                                <p className="text-[#A1A1AA] text-sm font-semibold font-inter">
                                     hours of content
                                 </p>
                             </div>
-                        </CardContent>
-                    </Card>
+                        </div>
 
-                    {/* Views Card */}
-                    <Card className="bg-black/20 border-white/10">
-                        <CardContent className="p-[2vh] md:p-[4vh] flex flex-col items-center justify-between h-[20vh] md:h-[35vh]">
-                            <div className="bg-[#FFC857]/10 p-[1.5vh] md:p-[2vh] rounded-full">
-                                <Eye className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
+                        {/* Views */}
+                        <div className="bg-[#161C26] rounded-lg p-4 flex items-center">
+                            <div className="bg-[#161C26] p-2 rounded-full">
+                                <Eye className="w-6 h-6 text-[#FFC857]" />
                             </div>
-                            <div className="text-center">
-                                <span className="text-[5vw] md:text-[3vw] font-bold text-[#FFC857]">
-                                    {views.toFixed(1)}{formattedViews.suffix}
+                            <div className="ml-4">
+                                <span className="text-white text-2xl font-black font-inter">
+                                    {views} {formattedViews.suffix}
                                 </span>
-                                <p className="text-[2vw] md:text-[1.5vw] text-[#A1A1AA]">
+                                <p className="text-[#A1A1AA] text-sm font-semibold font-inter">
                                     content views
                                 </p>
                             </div>
-                        </CardContent>
-                    </Card>
+                        </div>
 
-                    {/* Subscribers Card */}
-                    <Card className="bg-black/20 border-white/10">
-                        <CardContent className="p-[2vh] md:p-[4vh] flex flex-col items-center justify-between h-[20vh] md:h-[35vh]">
-                            <div className="bg-[#FFC857]/10 p-[1.5vh] md:p-[2vh] rounded-full">
-                                <Youtube className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw] text-[#FFC857]" />
+                        {/* Subscribers */}
+                        <div className="bg-[#161C26] rounded-lg p-4 flex items-center">
+                            <div className="bg-[#161C26] p-2 rounded-full">
+                                <Youtube className="w-6 h-6 text-[#FFC857]" />
                             </div>
-                            <div className="text-center">
-                                <span className="text-[5vw] md:text-[3vw] font-bold text-[#FFC857]">
-                                    {subscribers.toFixed(2)}{formattedSubs.suffix}
+                            <div className="ml-4">
+                                <span className="text-white text-2xl font-black font-inter">
+                                    {subscribers} {formattedSubs.suffix}
                                 </span>
-                                <p className="text-[2vw] md:text-[1.5vw] text-[#A1A1AA]">
+                                <p className="text-[#A1A1AA] text-sm font-semibold font-inter">
                                     subscribers
                                 </p>
                             </div>
-                        </CardContent>
-                    </Card>
-                </div>
-            </motion.div>
+                        </div>
+
+                        {/* Active Community - Static Value */}
+                        <div className="bg-[#161C26] rounded-lg p-4 flex items-center">
+                            <div className="bg-[#161C26] p-2 rounded-full">
+                                <Instagram className="w-6 h-6 text-[#FFC857]" />
+                            </div>
+                            <div className="ml-4">
+                                <span className="text-white text-2xl font-black font-inter">
+                                    633K+
+                                </span>
+                                <p className="text-[#A1A1AA] text-sm font-semibold font-inter">
+                                    Instagram Followers
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
         </section>
     );
 } 

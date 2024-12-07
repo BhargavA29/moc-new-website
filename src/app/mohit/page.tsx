@@ -53,12 +53,10 @@ export default function MohitPage() {
             {imagesLoaded && (
                 <ProfileLayout>
                     <ProfileHero
-                        firstName="MOHIT"
-                        lastName="YODHA"
+                        coverImage="/media/banner.jpg"
                         profileImage="https://pbs.twimg.com/profile_images/1677944567155552257/9RIHfcOd_400x400.jpg"
-                        roles={["Founder - ComicVerse", "Co-Founder - MoC"]}
-                        firstNamePosition={{ top: '11%', left: '21%' }}
-                        lastNamePosition={{ bottom: '16%', right: '23%' }}
+                        name="MOHIT YODHA"
+                        title="Founder - ComicVerse | Co-Founder - MoC"
                     />
                     <ProfileQuote
                         quote="My fans love the genuine reactions I give about movies, and my passion for storytelling"

@@ -53,10 +53,11 @@ export default function Home() {
 
             {isLoaded && (
                 <main className="min-h-screen bg-[#0d1117] font-[Inter] text-white">
-                    <Navbar />
+
 
                     {/* Critical content - loads first */}
                     <Suspense fallback={<LoadingScreen />}>
+                        <Navbar />
                         <Hero />
                     </Suspense>
 

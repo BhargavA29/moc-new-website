@@ -1,7 +1,7 @@
 // /src/components/hero.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Bangers } from 'next/font/google';
 import Marquee from 'react-fast-marquee';
@@ -14,6 +14,8 @@ const bangers = Bangers({
 
 export function Hero() {
     const [marqueeSpeed, setMarqueeSpeed] = useState(150);
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
         const updateMarqueeSpeed = () => {
@@ -26,31 +28,69 @@ export function Hero() {
             }
         };
 
+        // Debounce resize event for better performance
+        let resizeTimer: NodeJS.Timeout;
+        const handleResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(updateMarqueeSpeed, 100);
+        };
+
         updateMarqueeSpeed();
-        window.addEventListener('resize', updateMarqueeSpeed);
+        window.addEventListener('resize', handleResize);
 
         return () => {
-            window.removeEventListener('resize', updateMarqueeSpeed);
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(resizeTimer);
         };
     }, []);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (video) {
+            video.preload = 'auto';
+
+            const handleCanPlay = () => {
+                setIsVideoLoaded(true);
+            };
+
+            video.addEventListener('canplay', handleCanPlay);
+
+            // Fallback if video takes too long
+            const timeoutId = setTimeout(() => {
+                if (!isVideoLoaded) {
+                    setIsVideoLoaded(true);
+                }
+            }, 2000);
+
+            return () => {
+                video.removeEventListener('canplay', handleCanPlay);
+                clearTimeout(timeoutId);
+            };
+        }
+    }, [isVideoLoaded]);
 
     return (
         <section className="relative w-full h-screen min-h-[600px] flex items-end overflow-hidden">
             {/* Background Video with Fade In - Full Screen Coverage */}
             <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ opacity: isVideoLoaded ? 1 : 0 }}
                 transition={{ duration: 1.2, ease: 'easeOut' }}
                 className="absolute inset-0 w-full h-full"
             >
                 <video
+                    ref={videoRef}
                     autoPlay
                     loop
                     muted
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover object-center"
+                    poster="/media/backdrop-poster.jpg" // Add a poster image for better initial load
                 >
-                    <source src="/media/backdrop.mp4" type="video/mp4" />
+                    <source
+                        src="/media/backdrop.mp4"
+                        type="video/mp4"
+                    />
                 </video>
             </motion.div>
 
@@ -64,7 +104,7 @@ export function Hero() {
                         className={`${bangers.className} text-[#FFC857] text-[clamp(2rem,5vw,4rem)] whitespace-nowrap flex items-center`}
                     >
                         {/* First span with original fill styling */}
-                        <span className="mx-[2vw] text-[20vw] md:text-[8vw] ">We make conversations around cinema</span>
+                        <span className="mx-[2vw] text-[20vw] md:text-[8vw]">We make conversations around cinema</span>
 
                         {/* Clapperboard separator with fixed sizing */}
                         <span className="mx-[2vw]">

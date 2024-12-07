@@ -28,7 +28,12 @@ export async function GET() {
             };
         }, { viewCount: 0, subscriberCount: 0, videoCount: 0 });
 
-        return NextResponse.json(totalStats);
+        return new Response(JSON.stringify(totalStats), {
+            headers: {
+                'Content-Type': 'application/json',
+                'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30'
+            },
+        });
     } catch (err: unknown) {
         // Log the error for debugging
         console.error('YouTube API Error:', err);

@@ -4,14 +4,25 @@ import { LoadingScreen } from "@/components/loading-screen";
 import { useImageLoader } from "@/hooks/useImageLoader";
 import { AnimatePresence } from "framer-motion";
 import { Hero } from '@/components/hero'
-import { VideoGrid } from '@/components/video-grid'
 import { Channels } from '@/components/channels'
 import { Team } from '@/components/team'
 import { JoinSection } from '@/components/join-section'
 import { Footer } from '@/components/footer'
 import { Navbar } from '@/components/navbar'
-import { StatsSection } from '@/components/stats-section'
+
 import { MotionWrapper } from '@/components/motion-wrapper'
+import dynamic from 'next/dynamic';
+
+// Dynamic import for components that aren't needed immediately
+const VideoGrid = dynamic(() => import('@/components/video-grid').then(mod => mod.VideoGrid), {
+    loading: () => <LoadingScreen />,
+    ssr: true
+});
+
+const StatsSection = dynamic(() => import('@/components/stats-section').then(mod => mod.StatsSection), {
+    loading: () => <LoadingScreen />,
+    ssr: false
+});
 
 export default function Home() {
     // Add all media URLs that need to be preloaded

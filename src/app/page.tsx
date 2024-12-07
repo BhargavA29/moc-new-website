@@ -1,32 +1,22 @@
 'use client';
 
+import { Suspense, lazy } from 'react';
 import { LoadingScreen } from "@/components/loading-screen";
 import { useImageLoader } from "@/hooks/useImageLoader";
 import { AnimatePresence } from "framer-motion";
-import { Hero } from '@/components/hero'
-import { Channels } from '@/components/channels'
-import { Team } from '@/components/team'
-import { JoinSection } from '@/components/join-section'
-import { Footer } from '@/components/footer'
 import { Navbar } from '@/components/navbar'
 
-import { MotionWrapper } from '@/components/motion-wrapper'
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-
-// Dynamic import for components that aren't needed immediately
-const VideoGrid = dynamic(() => import('@/components/video-grid').then(mod => mod.VideoGrid), {
-    loading: () => <LoadingScreen />,
-    ssr: true
-});
-
-const StatsSection = dynamic(() => import('@/components/stats-section').then(mod => mod.StatsSection), {
-    loading: () => <LoadingScreen />,
-    ssr: false
-});
+// Lazy load components
+const Hero = lazy(() => import('@/components/hero').then(mod => ({ default: mod.Hero })));
+const VideoGrid = lazy(() => import('@/components/video-grid').then(mod => ({ default: mod.VideoGrid })));
+const Channels = lazy(() => import('@/components/channels').then(mod => ({ default: mod.Channels })));
+const Team = lazy(() => import('@/components/team').then(mod => ({ default: mod.Team })));
+const JoinSection = lazy(() => import('@/components/join-section').then(mod => ({ default: mod.JoinSection })));
+const Footer = lazy(() => import('@/components/footer').then(mod => ({ default: mod.Footer })));
+const StatsSection = lazy(() => import('@/components/stats-section').then(mod => ({ default: mod.StatsSection })));
+const MotionWrapper = lazy(() => import('@/components/motion-wrapper').then(mod => ({ default: mod.MotionWrapper })));
 
 export default function Home() {
-    // Add all media URLs that need to be preloaded
     const mediaUrls = [
         '/media/backdrop.mp4',
         '/media/video-grid/shaktimaan.jpg',
@@ -56,37 +46,51 @@ export default function Home() {
     const isLoaded = useImageLoader(mediaUrls);
 
     return (
-        <main className="min-h-screenbg-[#0d1117] font-[Inter] text-white">
-            <Navbar />
+        <>
+            <AnimatePresence>
+                {!isLoaded && <LoadingScreen />}
+            </AnimatePresence>
 
-            {/* Critical content loads first */}
-            <Suspense fallback={<LoadingScreen />}>
-                <Hero />
-            </Suspense>
+            {isLoaded && (
+                <main className="min-h-screen bg-[#0d1117] font-[Inter] text-white">
+                    <Navbar />
 
-            {/* Secondary content */}
-            <Suspense fallback={<LoadingScreen />}>
-                <MotionWrapper>
-                    <VideoGrid />
-                </MotionWrapper>
-            </Suspense>
+                    {/* Critical content - loads first */}
+                    <Suspense fallback={<LoadingScreen />}>
+                        <Hero />
+                    </Suspense>
 
-            {/* Less critical content */}
-            <Suspense fallback={<LoadingScreen />}>
-                <MotionWrapper delay={0.2}>
-                    <Channels />
-                </MotionWrapper>
-                <MotionWrapper delay={0.3}>
-                    <StatsSection />
-                </MotionWrapper>
-                <MotionWrapper delay={0.4}>
-                    <Team />
-                </MotionWrapper>
-                <MotionWrapper delay={0.5}>
-                    <JoinSection />
-                </MotionWrapper>
-                <Footer />
-            </Suspense>
-        </main>
+                    {/* Primary content group */}
+                    <Suspense fallback={<LoadingScreen />}>
+                        <MotionWrapper>
+                            <VideoGrid />
+                        </MotionWrapper>
+                        <MotionWrapper delay={0.2}>
+                            <Channels />
+                        </MotionWrapper>
+                    </Suspense>
+
+                    {/* Secondary content group */}
+                    <Suspense fallback={<LoadingScreen />}>
+                        <MotionWrapper delay={0.3}>
+                            <StatsSection />
+                        </MotionWrapper>
+                        <MotionWrapper delay={0.4}>
+                            <Team />
+                        </MotionWrapper>
+                    </Suspense>
+
+                    {/* Footer content group */}
+                    <Suspense fallback={<LoadingScreen />}>
+                        <MotionWrapper delay={0.5}>
+                            <JoinSection />
+                        </MotionWrapper>
+                        <MotionWrapper>
+                            <Footer />
+                        </MotionWrapper>
+                    </Suspense>
+                </main>
+            )}
+        </>
     );
 }

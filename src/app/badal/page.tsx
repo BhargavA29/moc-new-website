@@ -6,9 +6,6 @@ import { ContentGrid } from "@/components/profile/ContentGrid";
 import { ProfileStats } from "@/components/profile/ProfileStats";
 import { SocialLinks } from "@/components/profile/SocialLinks";
 
-import { useImageLoader } from "@/hooks/useImageLoader";
-import { AnimatePresence } from "framer-motion";
-import { LoadingScreen } from "@/components/loading-screen";
 import { ProfileQuote } from "@/components/profile/ProfileQuote";
 
 
@@ -39,34 +36,25 @@ const socialLinks = {
 };
 
 export default function BadalPage() {
-    const imageUrls = [
-        'https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg'
-        // Add all image URLs used in the profile page
-    ];
 
-    const imagesLoaded = useImageLoader(imageUrls);
     return (
         <>
-            <AnimatePresence>
-                {!imagesLoaded && <LoadingScreen />}
-            </AnimatePresence>
 
-            {imagesLoaded && (
-                <ProfileLayout>
-                    <ProfileHero
-                        coverImage="/media/banner.jpg"
-                        profileImage="https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg"
-                        name="BADAL YADAV"
-                        title="Founder - BnfTV | Co-Founder - MoC"
-                    />
-                    <ProfileQuote
-                        quote="My fans love the genuine reactions I give about movies, and my passion for storytelling"
-                    />
-                    <ContentGrid items={contentItems} />
-                    <ProfileStats channelId="UCUinnqDgIsNFleLdkZKbP-w" />
-                    <SocialLinks   {...socialLinks} />
-                </ProfileLayout>
-            )}
+
+            <ProfileLayout>
+                <ProfileHero
+                    coverImage="/media/banner.jpg"
+                    profileImage="https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg"
+                    name="BADAL YADAV"
+                    title="Founder - BnfTV | Co-Founder - MoC"
+                />
+                <ProfileQuote
+                    quote="My fans love the genuine reactions I give about movies, and my passion for storytelling"
+                />
+                <ContentGrid items={contentItems} />
+                <ProfileStats channelId="UCUinnqDgIsNFleLdkZKbP-w" />
+                <SocialLinks   {...socialLinks} />
+            </ProfileLayout>
         </>
     );
 }

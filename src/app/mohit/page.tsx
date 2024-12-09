@@ -42,7 +42,7 @@ export default function MohitPage() {
             <ProfileLayout>
                 <ProfileHero
                     coverImage="/media/banner.jpg"
-                    profileImage="https://pbs.twimg.com/profile_images/1677944567155552257/9RIHfcOd_400x400.jpg"
+                    profileImage="/media/mohit.png"
                     name="MOHIT YODHA"
                     title="Founder - ComicVerse | Co-Founder - MoC"
                 />

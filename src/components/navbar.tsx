@@ -51,7 +51,7 @@ export function Navbar() {
                             href={item.href}
                             className={`text-base font-inter font-semibold lg:text-lg transition-all duration-300 ease-in-out relative group ${isActive(item.href)
                                 ? 'text-[#55799C]'
-                                : 'text-[#E5E7EB] hover:text-[#55799C] hover:scale-105'
+                                : 'text-[#E5E7EB] hover:text-[#55799C] hover:scale-100'
                                 }`}
                         >
                             {item.name}

@@ -44,7 +44,7 @@ export default function BadalPage() {
             <ProfileLayout>
                 <ProfileHero
                     coverImage="/media/banner.jpg"
-                    profileImage="https://pbs.twimg.com/profile_images/1742384377475280896/nCKMYPvB_400x400.jpg"
+                    profileImage="/media/badal.png"
                     name="BADAL YADAV"
                     title="Founder - BnfTV | Co-Founder - MoC"
                 />

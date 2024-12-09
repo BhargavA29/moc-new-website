@@ -40,7 +40,7 @@ const socialLinks = {
 
 export default function PriyanshuPage() {
     const imageUrls = [
-        'https://s3-alpha-sig.figma.com/img/e59d/6f52/c004cbea24c5d6df79a0c8c60d28246b?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IkOyETMj4PuGOY6bhRE1-R5vwa2s7Mex3cABQFCNoe2EzAXtbU2fZAzPmiZvdZy5KywJdoX61IrZ0WPVvfaU0hvqxE~c1HSuSIGKoSPn50J9kxKTiwgTUZqc-Yut~Bn56s-h09geQ3No9pSd3h4LA64U~nN5H7pVqilKs5-P7Z~wDs7WJI36TC1MEoWulrBQFKcJ3axcfdREedIIQ5acQSVGzcTFm~WYTLoTPWUYrCwIF~4a76iumbU-H9w3fdtWg3UhBmkovO42Bkjqzdo2KM8i9Givplh8e9aafkocPuCyix8RlV07D5tIcVhWG-qcKZJ0mtbmPgEir~UfkPBbow__',
+        'https://pbs.twimg.com/profile_images/1840623798661312512/T_BZu6Wy_400x400.jpg',
 
     ];
 

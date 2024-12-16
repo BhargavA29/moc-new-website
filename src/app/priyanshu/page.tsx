@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { useEffect, useState } from 'react';
+import { Skeleton } from '@/components/skeleton';
 
 
 interface ChannelStats {
@@ -102,6 +103,9 @@ function StatsTable() {
 
 
 export default function ProfilePage() {
+    const [bannerLoaded, setBannerLoaded] = useState(false);
+    const [profileLoaded, setProfileLoaded] = useState(false);
+
     return (
         <main className="min-h-screen bg-[#0d1117] text-white/90">
             {/* Navbar */}
@@ -111,12 +115,17 @@ export default function ProfilePage() {
             <div className="pt-16">
                 <div className="max-w-[1400px] mx-auto px-4">
                     <div className="relative h-[40vh]  overflow-hidden">
+                        {!bannerLoaded && (
+                            <Skeleton className="absolute inset-0" />
+                        )}
                         <Image
                             src="/media/banner.jpg"
                             alt="Cover"
                             fill
-                            className="object-cover"
+                            className={`object-cover transition-opacity duration-300 ${bannerLoaded ? 'opacity-100' : 'opacity-0'
+                                }`}
                             priority
+                            onLoadingComplete={() => setBannerLoaded(true)}
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d1117]" />
                     </div>
@@ -244,16 +253,21 @@ export default function ProfilePage() {
                     <div className="md:w-[350px] shrink-0">
                         <div className="bg-white/5 rounded p-4 sticky top-24">
                             <div className="text-center mb-4">
-                                <Image
-                                    src="/media/pj.png"
-                                    alt="PJ"
-                                    width={300}
-                                    height={300}
-                                    className="rounded-full mb-2"
-                                />
-                                <p className="text-sm text-white/60 text-[clamp(0.875rem,1.5vw,1rem)]">
-                                    Content Creator | Film Critic | Entrepreneur
-                                </p>
+                                <div className="relative w-[300px] h-[300px] mx-auto">
+                                    {!profileLoaded && (
+                                        <Skeleton className="absolute inset-0 rounded-full" />
+                                    )}
+                                    <Image
+                                        src="/media/pj.png"
+                                        alt="Priyanshu Jaiswal"
+                                        width={300}
+                                        height={300}
+                                        className={`rounded-full transition-opacity duration-300 ${profileLoaded ? 'opacity-100' : 'opacity-0'
+                                            }`}
+                                        onLoadingComplete={() => setProfileLoaded(true)}
+                                    />
+                                </div>
+                                <p className="text-sm pt-2 text-white/60">Content Creator | Film Critic | Entrepreneur</p>
                             </div>
 
                             {/* Info Table */}

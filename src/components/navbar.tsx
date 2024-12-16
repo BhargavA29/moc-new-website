@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogClose } from '
 import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { bangers } from '@/lib/fonts';
 
 const navigationItems = [
     { name: 'BADAL', href: '/badal' },
@@ -38,7 +39,7 @@ export function Navbar() {
             <nav className="flex items-center justify-between h-16 md:h-16">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
-                    <span className="text-2xl sm:text-3xl lg:text-4xl text-[#FFC857]" style={{ fontFamily: 'Bangers' }}>
+                    <span className={`text-2xl sm:text-3xl lg:text-4xl text-[#FFC857] ${bangers.className}`}>
                         MEN OF CULTURE
                     </span>
                 </Link>

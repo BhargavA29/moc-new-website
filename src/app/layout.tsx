@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Honk } from "next/font/google";
 import "./globals.css";
+import { bangers } from '@/lib/fonts';
 
 const inter = Inter({
     subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="scroll-smooth">
+        <html lang="en" className={`${bangers.variable}`}>
             <body className={`${inter.variable} ${honk.variable} antialiased`}>
                 {children}
             </body>

@@ -302,7 +302,7 @@ export function JoinSection() {
                             vibrant community on Discord. Join us today!
                         </p>
                         <Link
-                            href="mailto:contact@menofculture.com"
+                            href="mailto:contact@menofculture.in"
                             className="flex items-center gap-2 text-[#FFC857]"
                         >
                             <span className="font-medium">Email us</span>

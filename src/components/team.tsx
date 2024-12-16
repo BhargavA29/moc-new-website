@@ -7,7 +7,7 @@ const team = [
     {
         name: 'Badal Yadav',
         role: 'Co-founder',
-        image: '/media/badal.png',
+        image: '/media/badal-pfp.jpg',
         link: '/badal',
     },
     {

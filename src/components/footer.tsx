@@ -6,18 +6,20 @@ import { MotionWrapper } from './motion-wrapper'
 
 const footerLinks = {
     quickLinks: [
-        { name: 'About', href: '#' },
-        { name: 'Privacy Policy', href: '#' },
-        { name: 'Terms of Service', href: '#' },
+        { name: 'Home', href: '/' },
+        { name: 'Privacy Policy', href: '/privacy-policy' },
+        { name: 'Terms & Conditions', href: '/terms-and-conditions' },
     ],
     team: [
-        { name: 'Careers', href: '#' },
-        { name: 'News', href: '#' },
+        { name: 'Mohit', href: '/mohit' },
+        { name: 'Badal', href: '/badal' },
+        { name: 'Priyanshu', href: '/priyanshu' },
     ],
     socials: [
         { name: 'Instagram', href: 'https://www.instagram.com/menofculture.69', target: '_blank' },
         { name: 'Discord', href: 'https://discord.gg/GAnTMVurm4', target: '_blank' },
         { name: 'Snapchat', href: 'https://www.snapchat.com/add/menofculture24?share_id=us5esu2zD8E&locale=en-GB', target: '_blank' },
+        { name: 'YouTube', href: 'https://www.youtube.com/@menofculturepodcast', target: '_blank' },
     ]
 }
 

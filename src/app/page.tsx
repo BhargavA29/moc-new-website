@@ -5,7 +5,7 @@ import { LoadingScreen } from "@/components/loading-screen";
 import { AnimatePresence } from "framer-motion";
 import { Navbar } from '@/components/navbar';
 
-import { VideoGridSkeleton } from '@/components/ui/skeleton';
+
 
 // Lazy load components
 const Hero = lazy(() => import('@/components/hero').then(mod => ({ default: mod.Hero })));
@@ -47,8 +47,8 @@ export default function Home() {
                     <Hero />
                 </Suspense>
 
-                {/* Video Grid Section */}
-                <Suspense fallback={<VideoGridSkeleton />}>
+                {/* Video Grid Section with its own loading state */}
+                <Suspense>
                     <VideoGrid />
                 </Suspense>
 

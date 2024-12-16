@@ -222,7 +222,7 @@ export default function ProfilePage() {
                             <div className="text-center mb-4">
                                 <div className="relative w-[300px] h-[300px] mx-auto">
                                     {!profileLoaded && (
-                                        <div className="absolute inset-0 rounded-full bg-white/10" />
+                                        <Skeleton className="absolute inset-0 rounded-full" />
                                     )}
                                     <Image
                                         src="/media/badal-pfp.jpg"
@@ -244,7 +244,7 @@ export default function ProfilePage() {
                                 <tbody>
                                     <tr className="border-b border-white/10">
                                         <th className="text-white/60 text-left py-2">Born</th>
-                                        <td className="py-2">Mumbai (raised in Kolhapur)</td>
+                                        <td className="py-2">Mumbai, Raised in Kolhapur</td>
                                     </tr>
                                     <tr className="border-b border-white/10">
                                         <th className="text-white/60 text-left py-2">Channel</th>
